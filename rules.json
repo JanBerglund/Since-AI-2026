@@ -1,0 +1,38 @@
+[
+  {
+    "id": "door_clear_width",
+    "standard": "ADA",
+    "clause": "ADA 404.2.3",
+    "text": "Accessible door openings should be at least 815 mm clear width.",
+    "needs_passengers": false,
+    "thing": "door",
+    "field": "clear_width_mm",
+    "min": 815,
+    "only_if": {},
+    "verified": false
+  },
+  {
+    "id": "corridor_width",
+    "standard": "ADA",
+    "clause": "ADA 403.5.1",
+    "text": "Accessible routes should provide enough clear width for movement.",
+    "needs_passengers": false,
+    "thing": "corridor",
+    "field": "clear_width_mm",
+    "min": 915,
+    "only_if": {},
+    "verified": false
+  },
+  {
+    "id": "research_vessel_exemption",
+    "standard": "PVAG",
+    "clause": "Not applicable",
+    "text": "Passenger-ship accessibility rules do not apply to research vessels.",
+    "needs_passengers": false,
+    "thing": "ship",
+    "field": "vessel_type",
+    "min": 0,
+    "only_if": {"vessel_type": "research"},
+    "verified": false
+  }
+]
