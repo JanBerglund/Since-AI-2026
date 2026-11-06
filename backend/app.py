@@ -11,6 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from backend.checker import apply_rules
+from backend.ocr import extract_doors_from_pdf_page
 from backend.reporting import generate_report_image
 
 app = FastAPI(title="Ship Compliance Checker API", version="0.1.0")
@@ -71,16 +72,16 @@ def _extract_design_from_pdf(pdf_bytes: bytes) -> dict[str, Any]:
         return design
 
     for page_number, page in enumerate(document, start=1):
-        text = page.get_text("text")
-        if not text:
+        detected = extract_doors_from_pdf_page(page)
+        if not detected:
             continue
 
-        for line in text.splitlines():
-            match = re.search(r"(D-\d+)\s*[:\-]?\s*(\d{2,4})\s*(?:mm|MM)", line)
-            if not match:
+        for door in detected:
+            door_id = str(door.get("id", "door")).upper()
+            width_text = door.get("clear_width_mm")
+            if width_text is None:
                 continue
 
-            door_id, width_text = match.groups()
             design["doors"].append(
                 {
                     "id": door_id,
