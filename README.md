@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ship design compliance checker
 
-## Getting Started
+A Next.js App Router website for uploading a general arrangement PDF, choosing pages, and checking them against compliance rules.
 
-First, run the development server:
+## Run locally
 
-```bash
+Requires Node.js 20 or newer.
+
+```powershell
+npm install
+Copy-Item .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The example environment enables mock results so the interface can be tried without a backend. Restart the dev server after changing `.env.local`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To use the Python backend instead, set `NEXT_PUBLIC_MOCK=0` and configure `NEXT_PUBLIC_API_URL` (defaults to `http://localhost:8000`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project files
 
-## Learn More
+- `src/app/page.js` — upload, page selection, and check workflow.
+- `src/components/PdfPicker.js` — PDF upload, page previews, and page selection.
+- `src/components/ResultsView.js` — summary, marked drawings, and findings table.
+- `src/lib/pdf.js` — browser-side PDF rendering and page-range helpers.
+- `src/lib/api.js` — backend request and mock results.
+- `scripts/copy-pdf-worker.mjs` — copies the PDF.js worker into `public/` during install.
+- `public/picker_preview.png` and `public/result_preview.png` — supplied design references.
 
-To learn more about Next.js, take a look at the following resources:
+## Backend contract
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The website sends `POST {NEXT_PUBLIC_API_URL}/check` as multipart form data with `file` (the PDF) and `pages` (comma-separated, 1-based page numbers). The response JSON has this shape:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```json
+{
+  "summary": { "checked": 5, "fine": 3, "not_fine": 1, "unknown": 1 },
+  "findings": [
+    {
+      "number": 1,
+      "rule": "...",
+      "clause": "ADA 404.2.3",
+      "item": "D-214",
+      "verdict": "not_fine",
+      "label": "D-214: 780 mm, needs 815",
+      "page": 1,
+      "source": "GA drawing page 1"
+    }
+  ],
+  "images": [{ "page": 1, "url": "/files/report_page1.png" }]
+}
+```
 
-## Deploy on Vercel
+`verdict` is `fine`, `not_fine`, or `unknown`. The backend must allow requests from the website through CORS. Page previews are rendered in the browser; the PDF is sent only after pressing **Check**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design references
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![PDF page picker reference](public/picker_preview.png)
+
+![Compliance results reference](public/result_preview.png)
