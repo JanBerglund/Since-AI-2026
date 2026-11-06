@@ -71,9 +71,9 @@ def extract_doors_from_text(text: str) -> list[dict[str, Any]]:
 def _ocr_page_text(page: Any) -> str:
     """Render a PDF page to an image, OCR it, and return the recognized text."""
     try:
-        pix = page.get_pixmap(matrix=None)
+        pix = page.get_pixmap(dpi=216, alpha=False)
         image = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
-        text = pytesseract.image_to_string(image, config="--psm 6")
+        text = pytesseract.image_to_string(image, config="--oem 1 --psm 11")
         return text or ""
     except Exception:
         return ""

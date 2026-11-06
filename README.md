@@ -55,7 +55,7 @@ npm run build
 
 ## Current extraction limits
 
-The PDF extractor currently recognizes door labels when a door ID and a width in millimeters appear together, such as `D-214 780 mm`. It first reads embedded PDF text and uses Tesseract on pages where that text does not produce a match. It does not yet interpret drawing geometry, associate separate dimension callouts with doors, or check corridor widths. The generated report images are placeholders, not annotations of the uploaded drawing.
+The PDF extractor currently recognizes door labels when a door ID and a width in millimeters appear together, such as `D-214 780 mm`. It first reads embedded PDF text and uses Tesseract on selected pages where that text does not produce a match. A selected PDF page with no recognized door width returns `unknown`; that is an extraction gap, not a compliance pass or failure. The extractor does not yet interpret drawing geometry, associate separate dimension callouts with doors, or check corridor widths. The generated report images are placeholders, not annotations of the uploaded drawing.
 
 Rules and thresholds live in `rules.json`; entries currently marked `"verified": false` are not validated compliance guidance. Treat all output as experimental and have a qualified reviewer verify the source drawing and applicable standards.
 

@@ -62,7 +62,10 @@ def _empty_design() -> dict[str, Any]:
     return {"ship": {"type": "cargo"}, "doors": []}
 
 
-def _extract_design_from_pdf(pdf_bytes: bytes) -> dict[str, Any]:
+def _extract_design_from_pdf(
+    pdf_bytes: bytes,
+    selected_pages: set[int] | None = None,
+) -> dict[str, Any]:
     """Convert a simple PDF with page text into the minimal design format we check."""
     design = _empty_design()
 
@@ -72,6 +75,9 @@ def _extract_design_from_pdf(pdf_bytes: bytes) -> dict[str, Any]:
         return design
 
     for page_number, page in enumerate(document, start=1):
+        if selected_pages is not None and page_number not in selected_pages:
+            continue
+
         detected = extract_doors_from_pdf_page(page)
         if not detected:
             continue
@@ -120,23 +126,49 @@ async def check(
 
     design = _empty_design()
     content = await file.read()
+    filename = (file.filename or "").lower()
     if content:
-        filename = (file.filename or "").lower()
         if filename.endswith(".json"):
             try:
                 design = json.loads(content.decode("utf-8"))
             except (UnicodeDecodeError, json.JSONDecodeError):
                 design = _empty_design()
         elif filename.endswith(".pdf"):
-            design = _extract_design_from_pdf(content)
+            design = _extract_design_from_pdf(content, set(selected_pages) or None)
 
     findings = apply_rules(design, rules)
+    if selected_pages:
+        findings = [
+            finding
+            for finding in findings
+            if int(finding.get("page", 1)) in selected_pages
+        ]
+
+    if filename.endswith(".pdf") and selected_pages:
+        detected_pages = {
+            int(door.get("page", 1))
+            for door in design.get("doors", [])
+        }
+        for page_number in selected_pages:
+            if page_number in detected_pages:
+                continue
+            findings.append(
+                {
+                    "rule": "measurement_not_detected",
+                    "clause": "Extraction status",
+                    "item": f"Page {page_number}",
+                    "verdict": "unknown",
+                    "label": "No door clear-width measurement was recognized; no compliance verdict was made.",
+                    "page": page_number,
+                    "bbox": [0, 0, 0, 0],
+                    "source": f"PDF page {page_number} text/OCR",
+                }
+            )
+
     for index, finding in enumerate(findings, start=1):
         finding["number"] = index
         if not selected_pages:
             finding["page"] = 1
-        elif finding.get("page") not in selected_pages:
-            finding["page"] = selected_pages[0]
 
     summary = {
         "checked": len(selected_pages) if selected_pages else max(1, len(findings)),
