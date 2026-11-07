@@ -9,20 +9,22 @@ import { openPdf, renderPage, parsePageRange, formatPageRange } from "../lib/pdf
 //   pages = array of page numbers, starting at 1, e.g. [1, 2, 5]
 export default function PdfPicker({ onChange }) {
   const [file, setFile] = useState(null);
+  const [schedule, setSchedule] = useState(null);
   const [pdf, setPdf] = useState(null);
   const [numPages, setNumPages] = useState(0);
   const [selected, setSelected] = useState([]);
   const [rangeText, setRangeText] = useState("");
   const [rangeError, setRangeError] = useState("");
   const [loadError, setLoadError] = useState("");
+  const [scheduleError, setScheduleError] = useState("");
   const [rendered, setRendered] = useState(0); // how many previews are drawn so far
   const [dragging, setDragging] = useState(false);
   const canvases = useRef({});
 
   // Tell the parent page what is selected.
   useEffect(() => {
-    onChange({ file, pages: selected });
-  }, [file, selected, onChange]);
+    onChange({ file, pages: selected, schedule });
+  }, [file, selected, schedule, onChange]);
 
   // Free memory when the PDF is replaced.
   useEffect(() => {
@@ -68,6 +70,8 @@ export default function PdfPicker({ onChange }) {
       const all = Array.from({ length: doc.numPages }, (_, i) => i + 1);
       canvases.current = {};
       setFile(f);
+      setSchedule(null);
+      setScheduleError("");
       setPdf(doc);
       setNumPages(doc.numPages);
       setRendered(0);
@@ -77,6 +81,17 @@ export default function PdfPicker({ onChange }) {
       console.error(err);
       setLoadError("Could not open this PDF. Is it damaged or password protected?");
     }
+  }
+
+  function loadSchedule(f) {
+    if (!f) return;
+    const name = f.name.toLowerCase();
+    if (!name.endsWith(".csv") && !name.endsWith(".json")) {
+      setScheduleError("Choose a CSV or JSON door schedule.");
+      return;
+    }
+    setSchedule(f);
+    setScheduleError("");
   }
 
   function setPages(pages) {
@@ -140,6 +155,31 @@ export default function PdfPicker({ onChange }) {
         )}
       </label>
       {loadError && <p className="error">{loadError}</p>}
+
+      <div className="schedule-upload">
+        <label htmlFor="door-schedule">Door schedule (optional)</label>
+        <div className="schedule-controls">
+          <input
+            id="door-schedule"
+            type="file"
+            accept=".csv,text/csv,.json,application/json"
+            onChange={(e) => {
+              loadSchedule(e.target.files?.[0]);
+              e.target.value = "";
+            }}
+          />
+          {schedule && (
+            <>
+              <span className="schedule-name">{schedule.name}</span>
+              <button type="button" onClick={() => setSchedule(null)}>
+                Remove
+              </button>
+            </>
+          )}
+        </div>
+        <p className="hint">CSV columns: id, clear_width_mm, and optional page. JSON uses a doors array with the same fields.</p>
+        {scheduleError && <p className="error">{scheduleError}</p>}
+      </div>
 
       {pdf && (
         <>

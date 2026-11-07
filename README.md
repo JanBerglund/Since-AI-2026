@@ -65,6 +65,10 @@ The frontend sends `POST {NEXT_PUBLIC_API_URL}/check` as multipart form data wit
 
 Page previews are rendered in the browser; the PDF is sent to the backend only after pressing **Check**.
 
+## Door schedule input
+
+An optional CSV or JSON door schedule can be uploaded with the drawing. CSV headers are `id`, `clear_width_mm`, and optional `page`; JSON can be a `doors` array with the same fields. A blank width is reported as `unknown`. If `page` is omitted, the row is assigned to the first selected drawing page. When a schedule is supplied, its measurements are used instead of OCR for that check.
+
 ## Project files
 
 - `src/app/page.js` — upload, page selection, and check workflow.

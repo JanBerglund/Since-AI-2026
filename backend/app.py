@@ -1,12 +1,14 @@
 from __future__ import annotations
 
+import csv
+import io
 import json
 import re
 from pathlib import Path
 from typing import Any
 
 import fitz
-from fastapi import FastAPI, File, Form, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
@@ -60,6 +62,97 @@ def _parse_pages(raw_pages: str) -> list[int]:
 
 def _empty_design() -> dict[str, Any]:
     return {"ship": {"type": "cargo"}, "doors": []}
+
+
+def _parse_door_schedule(
+    content: bytes,
+    filename: str,
+    selected_pages: list[int],
+) -> list[dict[str, Any]]:
+    try:
+        text = content.decode("utf-8-sig")
+    except UnicodeDecodeError as error:
+        raise HTTPException(status_code=400, detail="Door schedule must be UTF-8 encoded.") from error
+
+    suffix = Path(filename).suffix.lower()
+    if suffix == ".json":
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError as error:
+            raise HTTPException(status_code=400, detail="Door schedule JSON is invalid.") from error
+        rows = data if isinstance(data, list) else data.get("doors") if isinstance(data, dict) else None
+        if not isinstance(rows, list):
+            raise HTTPException(status_code=400, detail="Door schedule JSON must contain a doors array.")
+    elif suffix == ".csv":
+        reader = csv.DictReader(io.StringIO(text))
+        if not reader.fieldnames:
+            raise HTTPException(status_code=400, detail="Door schedule CSV must include a header row.")
+        rows = [
+            {str(key).strip().lower(): value for key, value in row.items() if key is not None}
+            for row in reader
+        ]
+    else:
+        raise HTTPException(status_code=400, detail="Door schedule must be a .csv or .json file.")
+
+    parsed: list[dict[str, Any]] = []
+    default_page = selected_pages[0] if selected_pages else 1
+    selected_page_set = set(selected_pages)
+    for row_number, row in enumerate(rows, start=2):
+        if not isinstance(row, dict):
+            raise HTTPException(status_code=400, detail=f"Door schedule row {row_number} must be an object.")
+
+        door_id = str(row.get("id") or row.get("door_id") or "").strip()
+        if not door_id:
+            raise HTTPException(status_code=400, detail=f"Door schedule row {row_number} is missing id.")
+
+        width_value = row.get("clear_width_mm")
+        if width_value is None or str(width_value).strip() == "":
+            width = None
+        else:
+            try:
+                width = int(str(width_value).strip().lower().removesuffix("mm").strip())
+            except ValueError as error:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Door schedule row {row_number} has an invalid clear_width_mm.",
+                ) from error
+            if width < 0:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Door schedule row {row_number} has a negative clear_width_mm.",
+                )
+
+        page_value = row.get("page")
+        if page_value is None or str(page_value).strip() == "":
+            page_number = default_page
+        else:
+            try:
+                page_number = int(page_value)
+            except (TypeError, ValueError) as error:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Door schedule row {row_number} has an invalid page.",
+                ) from error
+            if page_number < 1:
+                raise HTTPException(status_code=400, detail=f"Door schedule row {row_number} has an invalid page.")
+
+        if selected_page_set and page_number not in selected_page_set:
+            continue
+
+        parsed.append(
+            {
+                "id": door_id,
+                "clear_width_mm": width,
+                "page": page_number,
+                "bbox": [0, 0, 0, 0],
+                "accessible_route": True,
+                "source": f"door schedule: {Path(filename).name}",
+            }
+        )
+
+    if not parsed:
+        raise HTTPException(status_code=400, detail="Door schedule has no rows for the selected pages.")
+    return parsed
 
 
 def _extract_design_from_pdf(
@@ -119,6 +212,7 @@ def root() -> dict[str, str]:
 async def check(
     file: UploadFile = File(...),
     pages: str = Form(...),
+    door_schedule: UploadFile | None = File(None),
 ) -> dict[str, Any]:
     """Apply deterministic checks to design data and return the app contract."""
     selected_pages = _parse_pages(pages)
@@ -127,7 +221,14 @@ async def check(
     design = _empty_design()
     content = await file.read()
     filename = (file.filename or "").lower()
-    if content:
+    if door_schedule is not None:
+        schedule_content = await door_schedule.read()
+        design["doors"] = _parse_door_schedule(
+            schedule_content,
+            door_schedule.filename or "schedule.csv",
+            selected_pages,
+        )
+    elif content:
         if filename.endswith(".json"):
             try:
                 design = json.loads(content.decode("utf-8"))

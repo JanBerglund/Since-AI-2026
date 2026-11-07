@@ -84,6 +84,36 @@ main > .hint {
   background: #f0f6fa;
 }
 
+.schedule-upload {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.schedule-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.schedule-controls input[type="file"] {
+  max-width: 100%;
+}
+
+.schedule-controls button {
+  min-height: 34px;
+  padding: 5px 12px;
+  border: 1px solid #b8c5ce;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.schedule-name {
+  overflow-wrap: anywhere;
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;

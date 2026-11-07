@@ -18,7 +18,10 @@ def rule_applies(ship: dict[str, Any], rule: dict[str, Any]) -> bool:
 def apply_rules(design: dict[str, Any], rules: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Apply a small set of deterministic rules to a design JSON."""
     ship = design.get("ship", {})
-    doors = design.get("doors", [])
+    entities = {
+        "door": design.get("doors", []),
+        "corridor": design.get("corridors", []),
+    }
     findings: list[dict[str, Any]] = []
 
     for rule in rules:
@@ -29,16 +32,16 @@ def apply_rules(design: dict[str, Any], rules: list[dict[str, Any]]) -> list[dic
         if ship.get("type", "").lower() == "research" and standard in {"ADA", "PVAG"}:
             continue
 
-        for door in doors:
+        for item in entities.get(rule.get("thing"), []):
             field_name = rule.get("field")
             if field_name != "clear_width_mm":
                 continue
 
-            value = door.get(field_name)
-            door_id = door.get("id", "door")
-            page = door.get("page", 1)
-            bbox = door.get("bbox", [0, 0, 0, 0])
-            source = door.get("source", "unknown")
+            value = item.get(field_name)
+            item_id = item.get("id", rule.get("thing", "item"))
+            page = item.get("page", 1)
+            bbox = item.get("bbox", [0, 0, 0, 0])
+            source = item.get("source", "unknown")
 
             if value is None:
                 findings.append(
@@ -46,9 +49,9 @@ def apply_rules(design: dict[str, Any], rules: list[dict[str, Any]]) -> list[dic
                         "number": len(findings) + 1,
                         "rule": rule.get("id", "rule"),
                         "clause": rule.get("clause", "unknown"),
-                        "item": door_id,
+                        "item": item_id,
                         "verdict": "unknown",
-                        "label": f"{door_id}: clear width missing",
+                        "label": f"{item_id}: clear width missing",
                         "page": page,
                         "bbox": bbox,
                         "source": source,
@@ -59,17 +62,17 @@ def apply_rules(design: dict[str, Any], rules: list[dict[str, Any]]) -> list[dic
             threshold = rule.get("min", 0)
             if value >= threshold:
                 verdict = "fine"
-                label = f"{door_id}: {value} mm, meets {threshold}"
+                label = f"{item_id}: {value} mm, meets {threshold}"
             else:
                 verdict = "not_fine"
-                label = f"{door_id}: {value} mm, needs {threshold}"
+                label = f"{item_id}: {value} mm, needs {threshold}"
 
             findings.append(
                 {
                     "number": len(findings) + 1,
                     "rule": rule.get("id", "rule"),
                     "clause": rule.get("clause", "unknown"),
-                    "item": door_id,
+                    "item": item_id,
                     "verdict": verdict,
                     "label": label,
                     "page": page,

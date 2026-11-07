@@ -73,6 +73,27 @@ class RuleCheckerTests(unittest.TestCase):
 
         self.assertEqual(findings, [])
 
+    def test_door_width_rule_does_not_apply_to_corridors(self):
+        design = {
+            "ship": {"type": "cargo"},
+            "doors": [
+                {"id": "D-1", "clear_width_mm": 900},
+            ],
+        }
+        rules = [
+            {
+                "id": "corridor_width",
+                "standard": "ADA",
+                "clause": "ADA 403.5.1",
+                "thing": "corridor",
+                "field": "clear_width_mm",
+                "min": 915,
+                "only_if": {},
+            }
+        ]
+
+        self.assertEqual(apply_rules(design, rules), [])
+
 
 if __name__ == "__main__":
     unittest.main()
