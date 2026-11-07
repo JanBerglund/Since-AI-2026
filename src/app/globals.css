@@ -69,10 +69,99 @@ main > .hint {
   margin-bottom: 14px;
 }
 
+.chat-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.chat-window {
+  display: flex;
+  width: min(400px, calc(100vw - 48px));
+  max-height: min(640px, calc(100dvh - 108px));
+  flex-direction: column;
+  margin: 0;
+  padding: 16px;
+  box-shadow: 0 12px 40px rgb(21 39 52 / 22%);
+}
+
+.chat-window[hidden] {
+  display: none;
+}
+
+.chat-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.chat-header h2 {
+  margin-bottom: 4px;
+}
+
+.chat-close {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--foreground);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.chat-close:hover {
+  background: #f1f5f7;
+}
+
+.chat-launcher {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--navy);
+  box-shadow: 0 5px 18px rgb(21 39 52 / 24%);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chat-launcher:hover {
+  background: #083650;
+}
+
+.chat-launcher svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .chat-messages {
   display: grid;
+  min-height: 0;
   max-height: 420px;
   gap: 12px;
+  flex: 1;
   overflow-y: auto;
   margin-bottom: 14px;
   padding: 2px 6px 2px 2px;
@@ -438,6 +527,26 @@ th {
   font-weight: 400;
 }
 
+.results-page > h1 {
+  margin: 12px 0 16px;
+}
+
+.results-back {
+  display: inline-block;
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.results-back:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.results-message {
+  margin-top: 16px;
+}
+
 @media (max-width: 560px) {
   main {
     width: min(100% - 24px, 1068px);
@@ -459,5 +568,15 @@ th {
 
   .page-card canvas {
     height: 110px;
+  }
+
+  .chat-widget {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .chat-window {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 92px);
   }
 }

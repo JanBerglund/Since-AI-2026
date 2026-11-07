@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import ChatPanel from "../components/ChatPanel";
 import PdfPicker from "../components/PdfPicker";
-import ResultsView from "../components/ResultsView";
 import { runCheck } from "../lib/api";
+import { CHECK_RESULT_STORAGE_KEY } from "../lib/checkResult";
 
 export default function Home() {
+  const router = useRouter();
   const [selection, setSelection] = useState({
     file: null,
     pages: [],
@@ -15,25 +17,24 @@ export default function Home() {
     grossTonnage: "",
   });
   const [status, setStatus] = useState("idle"); // idle | running | done | error
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState("");
 
   const canRun = selection.file && selection.pages.length > 0 && status !== "running";
 
   async function onRun() {
     setStatus("running");
-    setError("");
     try {
-      setResult(
-        await runCheck(selection.file, selection.pages, selection.schedule, {
-          vesselType: selection.vesselType,
-          grossTonnage: selection.grossTonnage,
-        }),
-      );
+      const result = await runCheck(selection.file, selection.pages, selection.schedule, {
+        vesselType: selection.vesselType,
+        grossTonnage: selection.grossTonnage,
+      });
+      window.sessionStorage.setItem(CHECK_RESULT_STORAGE_KEY, JSON.stringify(result));
       setStatus("done");
+      router.push("/results");
     } catch (err) {
-      setError(err.message);
-      setStatus("error");
+      const message = err instanceof Error ? err.message : "The check could not be completed.";
+      window.sessionStorage.setItem(CHECK_RESULT_STORAGE_KEY, JSON.stringify({ error: message }));
+      setStatus("done");
+      router.push("/results");
     }
   }
 
@@ -41,8 +42,6 @@ export default function Home() {
     <main>
       <h1>Ship design compliance checker</h1>
       <p className="hint">Upload a general arrangement drawing, choose the pages, and check them against the rules.</p>
-
-      <ChatPanel />
 
       <PdfPicker onChange={setSelection} />
 
@@ -55,9 +54,8 @@ export default function Home() {
         {!selection.file && <span className="hint">Choose a PDF first.</span>}
         {selection.file && selection.pages.length === 0 && <span className="hint">Select at least one page.</span>}
       </div>
-      {status === "error" && <p className="error">{error}</p>}
 
-      {status === "done" && result && <ResultsView result={result} />}
+      <ChatPanel />
     </main>
   );
 }

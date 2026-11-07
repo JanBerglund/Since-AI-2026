@@ -120,6 +120,7 @@ function FormattedAnswer({ text, clauses }) {
 }
 
 export default function ChatPanel() {
+  const [isOpen, setIsOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
   const [pending, setPending] = useState(false);
@@ -144,56 +145,89 @@ export default function ChatPanel() {
   }
 
   return (
-    <section className="card chat-panel" aria-labelledby="chat-heading">
-      <h2 id="chat-heading">Ask about compliance rules</h2>
-      <p className="hint">Ask a question about the vessel rules and get an answer with source clauses.</p>
-
-      {messages.length > 0 && (
-        <div className="chat-messages" aria-live="polite" aria-busy={pending}>
-          {messages.map(({ question: asked, response }, index) => (
-            <article className="chat-exchange" key={index}>
-              <p className="chat-question">{asked}</p>
-              <div className="chat-answer">
-                <FormattedAnswer text={response.answer} clauses={response.clauses} />
-                {response.relevant && response.clauses.length > 0 && (
-                  <div className="chat-sources">
-                    <strong>Sources</strong>
-                    <ul>
-                      {response.clauses.map((clause) => (
-                        <li key={clause.id}>
-                          <a href={clause.source_url} target="_blank" rel="noreferrer">
-                            {clause.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </article>
-          ))}
-          {pending && <p className="hint" role="status">Thinking...</p>}
-        </div>
-      )}
-
-      <form className="chat-form" onSubmit={onSubmit}>
-        <label htmlFor="chat-question">Your question</label>
-        <textarea
-          id="chat-question"
-          value={question}
-          onChange={(event) => setQuestion(event.target.value)}
-          maxLength={2000}
-          placeholder="For example: What are the requirements for escape routes?"
-          required
-        />
-        <div className="chat-form-footer">
-          <span className="hint">Up to 2,000 characters</span>
-          <button type="submit" className="primary" disabled={pending || !question.trim()}>
-            {pending ? "Sending..." : "Ask"}
+    <div className="chat-widget">
+      <section
+        className="card chat-panel chat-window"
+        id="chat-window"
+        aria-labelledby="chat-heading"
+        hidden={!isOpen}
+      >
+        <div className="chat-header">
+          <div>
+            <h2 id="chat-heading">Ask about compliance rules</h2>
+            <p className="hint">Get answers with source clauses.</p>
+          </div>
+          <button
+            type="button"
+            className="chat-close"
+            aria-label="Close AI chat"
+            onClick={() => setIsOpen(false)}
+          >
+            &times;
           </button>
         </div>
-        {error && <p className="error" role="alert">{error}</p>}
-      </form>
-    </section>
+
+        {(messages.length > 0 || pending) && (
+          <div className="chat-messages" aria-live="polite" aria-busy={pending}>
+            {messages.map(({ question: asked, response }, index) => (
+              <article className="chat-exchange" key={index}>
+                <p className="chat-question">{asked}</p>
+                <div className="chat-answer">
+                  <FormattedAnswer text={response.answer} clauses={response.clauses} />
+                  {response.relevant && response.clauses.length > 0 && (
+                    <div className="chat-sources">
+                      <strong>Sources</strong>
+                      <ul>
+                        {response.clauses.map((clause) => (
+                          <li key={clause.id}>
+                            <a href={clause.source_url} target="_blank" rel="noreferrer">
+                              {clause.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </article>
+            ))}
+            {pending && <p className="hint" role="status">Thinking...</p>}
+          </div>
+        )}
+
+        <form className="chat-form" onSubmit={onSubmit}>
+          <label htmlFor="chat-question">Your question</label>
+          <textarea
+            id="chat-question"
+            value={question}
+            onChange={(event) => setQuestion(event.target.value)}
+            maxLength={2000}
+            placeholder="For example: What are the requirements for escape routes?"
+            required
+          />
+          <div className="chat-form-footer">
+            <span className="hint">Up to 2,000 characters</span>
+            <button type="submit" className="primary" disabled={pending || !question.trim()}>
+              {pending ? "Sending..." : "Ask"}
+            </button>
+          </div>
+          {error && <p className="error" role="alert">{error}</p>}
+        </form>
+      </section>
+      <button
+        type="button"
+        className="chat-launcher"
+        aria-label={isOpen ? "Close AI chat" : "Open AI chat"}
+        aria-controls="chat-window"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-5.5a7.5 7.5 0 1 1 17-4Z" />
+          <path d="M8 11h.01M12 11h.01M16 11h.01" />
+        </svg>
+        <span>Ask AI</span>
+      </button>
+    </div>
   );
 }

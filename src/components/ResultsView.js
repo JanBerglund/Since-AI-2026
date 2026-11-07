@@ -12,7 +12,7 @@ export default function ResultsView({ result }) {
 
   return (
     <section className="card results" aria-labelledby="results-heading">
-      <h2 id="results-heading">3. Result</h2>
+      <h2 id="results-heading">Review findings</h2>
       <p className="summary">
         {summary.checked} checked:
         <span className="badge fine">{summary.fine} fine</span>

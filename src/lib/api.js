@@ -65,14 +65,9 @@ export async function runCheck(file, pages, schedule = null, shipFacts = {}) {
   if (shipFacts.vesselType?.trim()) form.append("vessel_type", shipFacts.vesselType.trim());
   if (shipFacts.grossTonnage?.trim()) form.append("gross_tonnage", shipFacts.grossTonnage.trim());
 
-  let res;
-  try {
-    res = await fetch(`${API_URL}/check`, { method: "POST", body: form });
-  } catch {
-    throw new Error(
-      `Cannot reach the backend at ${API_URL}. Is it running? (Or set NEXT_PUBLIC_MOCK=1 to test the page.)`
-    );
-  }
+  const res = await fetch("/api/check", { method: "POST", body: form }).catch(() => {
+    throw new Error("Cannot reach the check API.");
+  });
   if (!res.ok) throw new Error(`Backend answered ${res.status}: ${await res.text()}`);
   const { summary, findings } = await res.json();
   return { summary, findings };

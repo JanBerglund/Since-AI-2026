@@ -1,26 +1,34 @@
 # Ship Design Compliance Checker
 
-A prototype web app with a Next.js frontend and a FastAPI question-answering API. The retained API is in `backend/api.py` and uses clause data from `backend/data/`.
+A prototype web app with a Next.js frontend and a FastAPI question-answering API. The API is in `backend/api.py` and uses the clause index in `backend/data/`.
 
 ## Requirements
 
 - Node.js 20 or newer and npm
 - Python 3.10 or newer
 
-The retained API currently imports `answer`, `rag_answer`, and `retrieval` modules that are not in this repository, so it cannot be started as-is.
-
 ## Run locally
 
-Install and start the frontend:
+Install the frontend dependencies and start the frontend:
 
 ```powershell
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The page includes a question-and-answer chat that calls the backend `POST /chat` endpoint; the separate PDF-checking workflow uses `POST /check`.
+In a second terminal, install the Python dependencies and start the backend from the repository root:
 
-Chat requests are sent to the same-origin Next.js `/api/chat` route, which forwards them to the FastAPI backend. Configure the server-only `BACKEND_API_URL` when the backend is not at `http://localhost:8000`; it defaults to `NEXT_PUBLIC_API_URL`. The chat always calls the backend and does not use mock responses.
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m uvicorn api:app --app-dir backend --host 127.0.0.1 --port 8000
+```
+
+Open [http://localhost:3000](http://localhost:3000). The main page lets you upload a PDF, select pages to check, and open the floating AI chat. When a check finishes or fails, the app navigates to the separate `/results` page. Results and errors are stored in the browser tab's session storage.
+
+The chat is available only on the upload page. It sends requests through the same-origin `/api/chat` route to backend `POST /chat`. The file checker sends multipart requests through `/api/check`, which forwards them to backend `POST /check`. Both routes default to `http://localhost:8000`; set the server-side `BACKEND_API_URL` to use a different backend URL.
+
+**Checker limitation:** the current FastAPI backend implements `POST /chat`, but does not yet implement `POST /check`. Until that backend endpoint is added, check requests reach the backend and return HTTP 404; the error is displayed on `/results`. Setting `NEXT_PUBLIC_MOCK=1` uses sample checker results for frontend demonstrations instead of calling the backend.
 
 ## Tests and checks
 
@@ -29,18 +37,21 @@ npm run lint
 npm run build
 ```
 
-## API contract
+## API
 
-`backend/api.py` exposes `POST /chat`, accepting a JSON `question` and returning an `answer`, a `relevant` flag, and matching `clauses`.
+`backend/api.py` exposes `POST /chat`. It accepts a JSON `question` and returns an `answer`, a `relevant` flag, and matching `clauses`.
 
 ## Project files
 
-- `src/app/page.js` — chat, upload, page selection, and check workflow.
+- `src/app/page.js` — PDF upload, page selection, check workflow, and chat launcher.
+- `src/app/results/page.js` — results and checker error page.
 - `src/components/ChatPanel.js` — question-and-answer chat and cited clause sources.
 - `src/components/PdfPicker.js` — PDF upload, page previews, and page selection.
 - `src/components/ResultsView.js` — summary and findings table (no marked drawing is shown).
 - `src/lib/pdf.js` — browser-side PDF rendering and page-range helpers.
-- `src/lib/api.js` — backend request and mock results.
+- `src/lib/api.js` — frontend API requests and optional mock checker results.
+- `src/app/api/chat/route.js` — same-origin chat proxy to the FastAPI backend.
+- `src/app/api/check/route.js` — same-origin checker proxy to the FastAPI backend.
 - `backend/api.py` — FastAPI question-answering endpoint.
 - `backend/data/` — clause data and embeddings.
 - `requirements.txt` — Python backend dependencies.
