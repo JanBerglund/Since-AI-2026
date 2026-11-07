@@ -1,0 +1,134 @@
+{
+  "claims": [
+    {
+      "section_id": "1.6",
+      "subject": "Length overall (LOA)",
+      "quantity": "Length",
+      "value": "19. 50",
+      "unit": "m",
+      "quote": "Length overall (LOA) 19. 50 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "Maximum beam at deck",
+      "quantity": "Beam",
+      "value": 6.7,
+      "unit": "m",
+      "quote": "Maximum beam at deck 6.70 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "Length at waterline",
+      "quantity": "Length",
+      "value": 17.4,
+      "unit": "m",
+      "quote": "Length at waterline 17.40 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "Depth",
+      "quantity": "Depth",
+      "value": 3.2,
+      "unit": "m",
+      "quote": "Depth 3.20 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "Maximum Service displacement",
+      "quantity": "Displacement",
+      "value": 48,
+      "unit": "t",
+      "quote": "Maximum Service displacement 48 t"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "Main engines maxim. power (100% MCR)",
+      "quantity": "Power",
+      "value": "2 x 368",
+      "unit": "kW",
+      "quote": "Main engines maxim. power (100% MCR) abt. 2 x 368 kW"
+    },
+    {
+      "section_id": "1.7",
+      "subject": "vessel’s crew",
+      "quantity": "count",
+      "value": 2,
+      "unit": "persons",
+      "quote": "The vessel’s crew is defined to be 2 persons."
+    },
+    {
+      "section_id": "1.7",
+      "subject": "transporting in operation conditions",
+      "quantity": "capacity",
+      "value": 8,
+      "unit": "pax.",
+      "quote": "it should be capable of transporting in operation conditions 8 pax. total, without limitations."
+    },
+    {
+      "section_id": "1.8",
+      "subject": "sea water",
+      "quantity": "density",
+      "value": 1.025,
+      "unit": "tonne/m3",
+      "quote": "sea water having a density of 1.025 tonne/m3"
+    },
+    {
+      "section_id": "1.12",
+      "subject": "noise limits",
+      "quantity": "noise level",
+      "value": 80,
+      "unit": "dBA",
+      "quote": "In general the noise limits are not to exceed the 80 dBA."
+    },
+    {
+      "section_id": "1.13",
+      "subject": "drawing and technical data",
+      "quantity": "measurement system",
+      "value": "metric",
+      "unit": "system",
+      "quote": "All drawing and technical data shall be drawn to the metric system and expressed in metric units."
+    },
+    {
+      "section_id": "1.13",
+      "subject": "vessel",
+      "quantity": "construction system",
+      "value": "metric",
+      "unit": "system",
+      "quote": "The vessel shall be built generally to the metric system."
+    }
+  ],
+  "invalid_sections": [
+    {
+      "section_id": "1.1",
+      "reason": "Invalid model response after retry"
+    },
+    {
+      "section_id": "1.2",
+      "reason": "Invalid model response after retry"
+    },
+    {
+      "section_id": "1.3",
+      "reason": "Invalid model response after retry"
+    },
+    {
+      "section_id": "1.9",
+      "reason": "Invalid model response after retry"
+    }
+  ],
+  "processed_sections": [
+    "1",
+    "1.1",
+    "1.2",
+    "1.3",
+    "1.4",
+    "1.5",
+    "1.6",
+    "1.7",
+    "1.8",
+    "1.9",
+    "1.10",
+    "1.11",
+    "1.12",
+    "1.13"
+  ]
+}

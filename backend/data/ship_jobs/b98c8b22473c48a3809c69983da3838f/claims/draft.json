@@ -1,0 +1,13 @@
+{
+  "claims": [],
+  "invalid_sections": [
+    {
+      "section_id": "1.1",
+      "reason": "Invalid model response after retry"
+    }
+  ],
+  "processed_sections": [
+    "1",
+    "1.1"
+  ]
+}

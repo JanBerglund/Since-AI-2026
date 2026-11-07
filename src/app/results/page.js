@@ -38,7 +38,7 @@ export default function ResultsPage() {
         (!(
           typeof parsedResult.error === "string" && parsedResult.error.length > 0
         ) &&
-          (!parsedResult.summary || !Array.isArray(parsedResult.findings)))
+          !Array.isArray(parsedResult.findings))
       ) {
         error = "The saved check results are invalid. Please run the check again.";
       } else if (typeof parsedResult.error === "string") {

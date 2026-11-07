@@ -12,7 +12,33 @@
 //   verdict is one of: "fine" | "not_fine" | "unknown"
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-const MOCK = process.env.NEXT_PUBLIC_MOCK === "1";
+const SHIPCHECK_PATH = "/api/shipcheck";
+
+async function shipcheckRequest(path, { method = "GET", body } = {}) {
+  let response;
+  try {
+    response = await fetch(`${SHIPCHECK_PATH}${path}`, {
+      method,
+      body: body instanceof FormData ? body : body ? JSON.stringify(body) : undefined,
+      headers: body && !(body instanceof FormData) ? { "Content-Type": "application/json" } : undefined,
+      cache: "no-store",
+    });
+  } catch {
+    throw new Error("Cannot reach Shipcheck. Check that its API is running.");
+  }
+
+  let result;
+  try {
+    result = await response.json();
+  } catch {
+    throw new Error("Shipcheck returned an invalid response.");
+  }
+  if (!response.ok) {
+    const detail = typeof result.detail === "string" ? result.detail : `HTTP ${response.status}`;
+    throw new Error(detail);
+  }
+  return result;
+}
 
 export async function askQuestion(question) {
   let res;
@@ -55,48 +81,54 @@ export async function askQuestion(question) {
   return result;
 }
 
-export async function runCheck(file, pages, schedule = null, shipFacts = {}) {
-  if (MOCK) return mockResult(pages);
-
+export async function createShipcheckJob(file) {
   const form = new FormData();
   form.append("file", file);
-  form.append("pages", pages.join(","));
-  if (schedule) form.append("door_schedule", schedule);
-  if (shipFacts.vesselType?.trim()) form.append("vessel_type", shipFacts.vesselType.trim());
-  if (shipFacts.grossTonnage?.trim()) form.append("gross_tonnage", shipFacts.grossTonnage.trim());
-
-  const res = await fetch("/api/check", { method: "POST", body: form }).catch(() => {
-    throw new Error("Cannot reach the check API.");
-  });
-  if (!res.ok) throw new Error(`Backend answered ${res.status}: ${await res.text()}`);
-  const { summary, findings } = await res.json();
-  return { summary, findings };
+  return shipcheckRequest("/jobs", { method: "POST", body: form });
 }
 
-// Fake data so the page can be tried without a backend.
-function mockResult(pages) {
-  const verdicts = ["fine", "not_fine", "unknown"];
-  const findings = pages.slice(0, 6).map((page, i) => {
-    const verdict = verdicts[i % 3];
-    return {
-      number: i + 1,
-      rule: "EXAMPLE-RULE",
-      clause: "EXAMPLE 1.2.3 (fake)",
-      item: `ITEM-${i + 1}`,
-      verdict,
-      label: verdict === "not_fine" ? `ITEM-${i + 1}: 780 mm, needs 815` : `ITEM-${i + 1}`,
-      page,
-      source: `page ${page}`,
-    };
+export function getShipcheckStatus(jobId) {
+  return shipcheckRequest(`/jobs/${jobId}`);
+}
+
+export function retryShipcheckExtraction(jobId) {
+  return shipcheckRequest(`/jobs/${jobId}/extract`, { method: "POST" });
+}
+
+export function getShipcheckClaims(jobId) {
+  return shipcheckRequest(`/jobs/${jobId}/claims`);
+}
+
+export function reviewShipcheckClaims(jobId, decisions) {
+  return shipcheckRequest(`/jobs/${jobId}/review`, {
+    method: "POST",
+    body: { decisions },
   });
-  const count = (v) => findings.filter((f) => f.verdict === v).length;
-  return {
-    summary: {
-      checked: findings.length,
-      fine: count("fine"),
-      not_fine: count("not_fine"),
-      unknown: count("unknown"),
-    },
-    findings,
-  };
+}
+
+export function startShipcheckCheck(jobId, acknowledgeIncompleteExtraction) {
+  return shipcheckRequest(`/jobs/${jobId}/check`, {
+    method: "POST",
+    body: { acknowledge_incomplete_extraction: acknowledgeIncompleteExtraction },
+  });
+}
+
+export function getShipcheckReport(jobId) {
+  return shipcheckRequest(`/jobs/${jobId}/report`);
+}
+
+export async function waitForShipcheckStatus(jobId, onStatus) {
+  const deadline = Date.now() + 30 * 60 * 1000;
+  while (Date.now() < deadline) {
+    const status = await getShipcheckStatus(jobId);
+    onStatus(status);
+    if (status.status === "review_required" || status.status === "complete") {
+      return status;
+    }
+    if (status.status === "extraction_failed" || status.status === "check_failed") {
+      throw new Error(status.error || `Shipcheck ${status.status.replace("_", " ")}.`);
+    }
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+  }
+  throw new Error("Shipcheck is taking longer than expected. Please try again later.");
 }

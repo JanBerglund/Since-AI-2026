@@ -1,0 +1,7 @@
+{
+  "job_id": "6da398d3240046ceb8140a728239249f",
+  "status": "extraction_failed",
+  "page_count": 148,
+  "error": "RuntimeError: Gemini API returned HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+  "created_at": "2026-11-07T17:19:49.508731+00:00"
+}

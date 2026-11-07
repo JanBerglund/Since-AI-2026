@@ -1,0 +1,39 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "*   Input: A ship specification section (Section ID: 1, Title: GENERAL, Text: \"1 GENERAL\").\n    *   Task: Extract explicit, checkable claims.\n    *   Output Format: A single valid, parseable JSON array (or object containing an array) following a specific schema.\n    *   Constraints:\n        *   No inference.\n        *   No unit conversion.\n        *   Verbatim quotes.\n        *   Return empty list if no claims.\n        *   No Markdown fences.\n        *   No extra text.\n        *   JSON schema provided.\n\n    *   Section ID: 1\n    *   Title: GENERAL\n    *   Text: \"1 GENERAL\"\n\n    *   \"1 GENERAL\" contains no measurements, quantities, values, or checkable specifications. It is just a header/title.\n\n    *   Since no claims are found, the `claims` array should be empty.\n\n    *   `{\"claims\": []}",
+            "thought": true
+          },
+          {
+            "text": "`",
+            "thought": true
+          },
+          {
+            "text": "{\"claims\": []}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 359,
+    "candidatesTokenCount": 5,
+    "totalTokenCount": 577,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 359
+      }
+    ],
+    "thoughtsTokenCount": 213,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-26b-a4b-it",
+  "responseId": "VVvvaqiTNtmZ28oPpr7mqAM"
+}
