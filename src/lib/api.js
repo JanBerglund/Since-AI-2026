@@ -12,13 +12,15 @@
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 const MOCK = process.env.NEXT_PUBLIC_MOCK === "1";
 
-export async function runCheck(file, pages, schedule = null) {
+export async function runCheck(file, pages, schedule = null, shipFacts = {}) {
   if (MOCK) return mockResult(pages);
 
   const form = new FormData();
   form.append("file", file);
   form.append("pages", pages.join(","));
   if (schedule) form.append("door_schedule", schedule);
+  if (shipFacts.vesselType?.trim()) form.append("vessel_type", shipFacts.vesselType.trim());
+  if (shipFacts.grossTonnage?.trim()) form.append("gross_tonnage", shipFacts.grossTonnage.trim());
 
   let res;
   try {

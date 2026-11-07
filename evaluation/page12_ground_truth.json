@@ -1,0 +1,23 @@
+{
+  "dataset_type": "real_human_ground_truth",
+  "source_pdf": "6096-070-001-(J) General Arrangement.pdf",
+  "page": 12,
+  "instructions": "Fill each text field by reading the real page 12 drawing by eye. Do not copy OCR output into this file as ground truth. These entries are empty placeholders, not vessel labels.",
+  "labels": [
+    {"id":"L01","text":"ENGINE ROOM"},
+    {"id":"L02","text":"WORKSHOP"},
+    {"id":"L03","text":"GYM"},
+    {"id":"L04","text":"DATA CENTER"},
+    {"id":"L05","text":"BOW THRUSTER ROOM"},
+    {"id":"L06","text":"SEWAGE SLUDGE TANK"},
+    {"id":"L07","text":"SEWAGE TANK"},
+    {"id":"L08","text":"WASTE OIL/SLUDGE"},
+    {"id":"L09","text":"OILY WATER"},
+    {"id":"L10","text":"GREY WATER HOLDING"},
+    {"id":"L11","text":"FUEL OIL OVERFLOW"},
+    {"id":"L12","text":"AFT TRANSDUCER ROOM"},
+    {"id":"L13","text":"FWD TRANSDUCER ROOM"},
+    {"id":"L14","text":"U-TUBE ROLL TANK ABOVE"},
+    {"id":"L15","text":"INSPECTION ACCESS"}
+  ]
+}

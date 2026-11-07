@@ -51,7 +51,7 @@ class RuleCheckerTests(unittest.TestCase):
         self.assertEqual(findings[0]["verdict"], "unknown")
         self.assertIn("missing", findings[0]["label"].lower())
 
-    def test_research_vessel_skips_ada_rules(self):
+    def test_research_vessel_ada_rule_is_not_applicable(self):
         design = {
             "ship": {"type": "research"},
             "doors": [
@@ -71,7 +71,7 @@ class RuleCheckerTests(unittest.TestCase):
 
         findings = apply_rules(design, rules)
 
-        self.assertEqual(findings, [])
+        self.assertEqual([finding["verdict"] for finding in findings], ["not_applicable"])
 
     def test_door_width_rule_does_not_apply_to_corridors(self):
         design = {

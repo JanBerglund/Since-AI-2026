@@ -6,6 +6,7 @@ const verdictLabels = {
   fine: "Fine",
   not_fine: "Not fine",
   unknown: "Cannot determine",
+  not_applicable: "Does not apply",
 };
 
 export default function ResultsView({ result }) {
@@ -19,6 +20,7 @@ export default function ResultsView({ result }) {
         <span className="badge fine">{summary.fine} fine</span>
         <span className="badge not-fine">{summary.not_fine} not fine</span>
         <span className="badge unknown">{summary.unknown} cannot determine</span>
+        <span className="badge not-applicable">{summary.not_applicable ?? 0} does not apply</span>
       </p>
 
       {images.length > 0 && (
@@ -62,8 +64,13 @@ export default function ResultsView({ result }) {
                 </td>
                 <td>{finding.item}</td>
                 <td>{finding.label}</td>
-                <td>{finding.clause || finding.rule}</td>
-                <td>{finding.page}</td>
+                <td>
+                  {finding.clause || finding.rule}
+                  {finding.verified === false && (
+                    <small className="rule-unverified">Rule not yet verified</small>
+                  )}
+                </td>
+                <td>{finding.page ?? "Unknown"}</td>
                 <td>{finding.source}</td>
               </tr>
             ))}

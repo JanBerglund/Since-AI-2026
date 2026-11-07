@@ -8,6 +8,7 @@ __pycache__/
 *.py[cod]
 /backend/files/*.png
 /backend/test_output/
+/backend/ocr_cache/
 /.pnp
 .pnp.*
 .yarn/*

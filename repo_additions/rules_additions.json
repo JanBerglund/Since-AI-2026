@@ -1,0 +1,14 @@
+[
+  {
+    "id": "marpol_annex1_oil_residue_tank_shown",
+    "kind": "presence",
+    "standard": "MARPOL Annex I",
+    "clause": "Reg. 12 (verify clause and 400 GT limit against the IMO text)",
+    "text": "A tank for oil residues (sludge) is shown on the drawings (presence only, capacity is not assessed)",
+    "applies_when": [{"field": "gross_tonnage", "op": ">=", "value": 400}],
+    "look_for": ["SLUDGE TANK", "OIL SLUDGE", "WASTE OIL", "OIL RESIDUE"],
+    "exclude": ["SEWAGE", "GREY WATER", "BLACK WATER"],
+    "min_confidence": 0.6,
+    "verified": false
+  }
+]

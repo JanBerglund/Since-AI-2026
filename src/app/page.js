@@ -6,7 +6,13 @@ import ResultsView from "../components/ResultsView";
 import { runCheck } from "../lib/api";
 
 export default function Home() {
-  const [selection, setSelection] = useState({ file: null, pages: [], schedule: null });
+  const [selection, setSelection] = useState({
+    file: null,
+    pages: [],
+    schedule: null,
+    vesselType: "",
+    grossTonnage: "",
+  });
   const [status, setStatus] = useState("idle"); // idle | running | done | error
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
@@ -17,7 +23,12 @@ export default function Home() {
     setStatus("running");
     setError("");
     try {
-      setResult(await runCheck(selection.file, selection.pages, selection.schedule));
+      setResult(
+        await runCheck(selection.file, selection.pages, selection.schedule, {
+          vesselType: selection.vesselType,
+          grossTonnage: selection.grossTonnage,
+        }),
+      );
       setStatus("done");
     } catch (err) {
       setError(err.message);

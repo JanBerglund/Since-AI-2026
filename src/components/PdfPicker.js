@@ -10,6 +10,8 @@ import { openPdf, renderPage, parsePageRange, formatPageRange } from "../lib/pdf
 export default function PdfPicker({ onChange }) {
   const [file, setFile] = useState(null);
   const [schedule, setSchedule] = useState(null);
+  const [vesselType, setVesselType] = useState("");
+  const [grossTonnage, setGrossTonnage] = useState("");
   const [pdf, setPdf] = useState(null);
   const [numPages, setNumPages] = useState(0);
   const [selected, setSelected] = useState([]);
@@ -23,8 +25,8 @@ export default function PdfPicker({ onChange }) {
 
   // Tell the parent page what is selected.
   useEffect(() => {
-    onChange({ file, pages: selected, schedule });
-  }, [file, selected, schedule, onChange]);
+    onChange({ file, pages: selected, schedule, vesselType, grossTonnage });
+  }, [file, selected, schedule, vesselType, grossTonnage, onChange]);
 
   // Free memory when the PDF is replaced.
   useEffect(() => {
@@ -71,6 +73,8 @@ export default function PdfPicker({ onChange }) {
       canvases.current = {};
       setFile(f);
       setSchedule(null);
+      setVesselType("");
+      setGrossTonnage("");
       setScheduleError("");
       setPdf(doc);
       setNumPages(doc.numPages);
@@ -155,6 +159,29 @@ export default function PdfPicker({ onChange }) {
         )}
       </label>
       {loadError && <p className="error">{loadError}</p>}
+
+      <div className="ship-facts">
+        <label>
+          Ship type (optional)
+          <input
+            type="text"
+            value={vesselType}
+            onChange={(event) => setVesselType(event.target.value)}
+            placeholder="Enter if known"
+          />
+        </label>
+        <label>
+          Gross tonnage (optional)
+          <input
+            type="number"
+            min="0"
+            step="any"
+            value={grossTonnage}
+            onChange={(event) => setGrossTonnage(event.target.value)}
+            placeholder="Enter if known"
+          />
+        </label>
+      </div>
 
       <div className="schedule-upload">
         <label htmlFor="door-schedule">Door schedule (optional)</label>

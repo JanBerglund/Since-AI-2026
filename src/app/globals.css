@@ -90,6 +90,28 @@ main > .hint {
   margin-top: 12px;
 }
 
+.ship-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ship-facts label {
+  display: grid;
+  gap: 6px;
+  color: #46535d;
+}
+
+.ship-facts input {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 6px 9px;
+  border: 1px solid #c8d2da;
+  border-radius: 6px;
+}
+
 .schedule-controls {
   display: flex;
   flex-wrap: wrap;
@@ -262,6 +284,10 @@ input {
   background: #d98300;
 }
 
+.badge.not-applicable {
+  background: #68737d;
+}
+
 .table-scroll {
   overflow-x: auto;
 }
@@ -286,6 +312,14 @@ th {
 .empty {
   color: #64717c;
   text-align: center;
+}
+
+.rule-unverified {
+  display: block;
+  margin-top: 3px;
+  color: #68737d;
+  font-size: 0.75rem;
+  font-weight: 400;
 }
 
 .result-images {

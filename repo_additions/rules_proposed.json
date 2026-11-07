@@ -1,0 +1,36 @@
+[
+  {
+    "id": "door_clear_width",
+    "standard": "ADA",
+    "clause": "404.2.3 (verify; vessels may follow the PVAG text instead)",
+    "text": "Door openings need a clear width of at least 32 in (812.8 mm)",
+    "applies_when": [{"field": "vessel_type", "op": "in", "value": ["passenger", "cruise"]}],
+    "thing": "door",
+    "field": "clear_width_mm",
+    "min": 812.8,
+    "verified": false
+  },
+  {
+    "id": "corridor_width",
+    "standard": "ADA",
+    "clause": "403.5.1 (verify; there is a short-length exception, and PVAG may differ)",
+    "text": "Accessible routes need a clear width of at least 36 in (914.4 mm)",
+    "applies_when": [{"field": "vessel_type", "op": "in", "value": ["passenger", "cruise"]}],
+    "thing": "corridor",
+    "field": "clear_width_mm",
+    "min": 914.4,
+    "verified": false
+  },
+  {
+    "id": "marpol_annex1_oil_residue_tank_shown",
+    "kind": "presence",
+    "standard": "MARPOL Annex I",
+    "clause": "Reg. 12 (verify clause and 400 GT limit against the IMO text)",
+    "text": "A tank for oil residues (sludge) is shown on the drawings (presence only, capacity is not assessed)",
+    "applies_when": [{"field": "gross_tonnage", "op": ">=", "value": 400}],
+    "look_for": ["SLUDGE TANK", "OIL SLUDGE", "WASTE OIL", "OIL RESIDUE"],
+    "exclude": ["SEWAGE", "GREY WATER", "BLACK WATER"],
+    "min_confidence": 0.6,
+    "verified": false
+  }
+]

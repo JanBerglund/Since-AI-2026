@@ -1,6 +1,8 @@
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
-from backend.ocr import extract_doors_from_text, resolve_tesseract_executable
+from backend.ocr import _ocr_page_text, extract_doors_from_text, resolve_tesseract_executable
 
 
 class OcrParsingTests(unittest.TestCase):
@@ -21,6 +23,16 @@ class OcrParsingTests(unittest.TestCase):
         resolved = resolve_tesseract_executable()
         self.assertTrue(resolved)
         self.assertTrue(resolved.lower().endswith("tesseract.exe"))
+
+    def test_ocr_runtime_errors_are_not_swallowed(self):
+        page = SimpleNamespace(
+            get_pixmap=lambda **kwargs: SimpleNamespace(width=1, height=1, samples=b"\x00\x00\x00")
+        )
+        with patch("backend.ocr.Image.frombytes", return_value=object()), patch(
+            "backend.ocr.pytesseract.image_to_string", side_effect=RuntimeError("OCR failed")
+        ):
+            with self.assertRaisesRegex(RuntimeError, "OCR failed"):
+                _ocr_page_text(page)
 
 
 if __name__ == "__main__":
