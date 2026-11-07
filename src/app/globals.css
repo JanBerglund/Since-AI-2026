@@ -65,6 +65,81 @@ main > .hint {
   background: #fff;
 }
 
+.chat-panel > .hint {
+  margin-bottom: 14px;
+}
+
+.chat-messages {
+  display: grid;
+  max-height: 420px;
+  gap: 12px;
+  overflow-y: auto;
+  margin-bottom: 14px;
+  padding: 2px 6px 2px 2px;
+}
+
+.chat-exchange {
+  display: grid;
+  gap: 8px;
+}
+
+.chat-question,
+.chat-answer {
+  width: fit-content;
+  max-width: min(90%, 720px);
+  padding: 10px 12px;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+
+.chat-question {
+  justify-self: end;
+  background: var(--navy);
+  color: #fff;
+}
+
+.chat-answer {
+  border: 1px solid var(--border);
+  background: #f7f9fa;
+}
+
+.chat-sources {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.chat-sources ul {
+  margin: 4px 0 0;
+  padding-left: 20px;
+}
+
+.chat-sources a {
+  color: var(--navy);
+  overflow-wrap: anywhere;
+}
+
+.chat-form {
+  display: grid;
+  gap: 8px;
+}
+
+.chat-form textarea {
+  width: 100%;
+  min-height: 84px;
+  padding: 9px;
+  border: 1px solid #c8d2da;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.chat-form-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .dropzone {
   display: flex;
   min-height: 68px;
@@ -320,31 +395,6 @@ th {
   color: #68737d;
   font-size: 0.75rem;
   font-weight: 400;
-}
-
-.result-images {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  gap: 14px;
-  margin: 0 0 16px;
-}
-
-.result-image {
-  margin: 0;
-}
-
-.result-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-}
-
-.result-image figcaption {
-  margin-top: 5px;
-  color: #64717c;
-  font-size: 0.9rem;
 }
 
 @media (max-width: 560px) {

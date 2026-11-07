@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 const verdictLabels = {
   fine: "Fine",
   not_fine: "Not fine",
@@ -10,7 +8,7 @@ const verdictLabels = {
 };
 
 export default function ResultsView({ result }) {
-  const { summary, findings = [], images = [] } = result;
+  const { summary, findings = [] } = result;
 
   return (
     <section className="card results" aria-labelledby="results-heading">
@@ -22,23 +20,6 @@ export default function ResultsView({ result }) {
         <span className="badge unknown">{summary.unknown} cannot determine</span>
         <span className="badge not-applicable">{summary.not_applicable ?? 0} does not apply</span>
       </p>
-
-      {images.length > 0 && (
-        <div className="result-images">
-          {images.map((image) => (
-            <figure className="result-image" key={image.page}>
-              <Image
-                src={image.url}
-                alt={`Compliance check results for page ${image.page}`}
-                width={1200}
-                height={850}
-                unoptimized
-              />
-              <figcaption>Marked drawing — page {image.page}</figcaption>
-            </figure>
-          ))}
-        </div>
-      )}
 
       <div className="table-scroll">
         <table>

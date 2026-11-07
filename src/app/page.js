@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ChatPanel from "../components/ChatPanel";
 import PdfPicker from "../components/PdfPicker";
 import ResultsView from "../components/ResultsView";
 import { runCheck } from "../lib/api";
@@ -40,6 +41,8 @@ export default function Home() {
     <main>
       <h1>Ship design compliance checker</h1>
       <p className="hint">Upload a general arrangement drawing, choose the pages, and check them against the rules.</p>
+
+      <ChatPanel />
 
       <PdfPicker onChange={setSelection} />
 
