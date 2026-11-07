@@ -1,7 +1,0 @@
-{
-  "ship": {"type": "cargo"},
-  "doors": [
-    {"id": "D-214", "deck": "01", "page": 1, "bbox": [10, 10, 200, 100], "clear_width_mm": 780, "accessible_route": true, "source": "demo"},
-    {"id": "D-300", "deck": "02", "page": 2, "bbox": [20, 20, 220, 120], "clear_width_mm": 900, "accessible_route": true, "source": "demo"}
-  ]
-}
