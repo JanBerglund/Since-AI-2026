@@ -29,6 +29,8 @@ Shipcheck processes the full PDF, so page selection is not used. It requires sel
 
 Extraction progress counts the selected specification sections sent to Gemini, not PDF pages. Those sections are processed sequentially, so a large specification can take several minutes. The browser checks job status every five seconds; if extraction fails, **Retry extraction** resumes the existing job from its last saved section.
 
+For a faster demo, set `SHIPCHECK_MAX_SECTIONS=5` in the backend environment before starting Shipcheck. This intentionally checks only the first five configured sections; use `0` for the complete extraction. The backend logs the time spent on each Gemini section request.
+
 The Shipcheck API defaults to `http://127.0.0.1:8001`; set `SHIPCHECK_API_URL` in `.env.local` if it is running elsewhere. Its same-origin proxy is `/api/shipcheck`.
 
 **Backend setup blocker:** the current checkout is missing `backend/claim_models.py` and `backend/units.py`, which Shipcheck imports. Restore those modules before starting the API.

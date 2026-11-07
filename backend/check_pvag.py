@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from collections.abc import Callable
 from typing import Literal
 
 from claim_models import SpecClaim, normalize_whitespace, write_json
@@ -155,13 +156,17 @@ def check_claims(
     extraction_client: JsonGenerator,
     *,
     scope_facts: ScopeFacts = ScopeFacts(),
+    on_progress: Callable[[int, int], None] | None = None,
 ) -> list[PVAGFinding]:
     scope = determine_scope(scope_facts, retriever.clauses)
     findings: list[PVAGFinding] = []
     pvag_clauses = {
         clause.id: clause for clause in retriever.clauses if clause.id.startswith("V")
     }
-    for claim in claims:
+    total_claims = len(claims)
+    for claim_index, claim in enumerate(claims, start=1):
+        if on_progress is not None:
+            on_progress(claim_index, total_claims)
         if not is_geometric_or_capacity_claim(claim):
             continue
         results = retriever.search(

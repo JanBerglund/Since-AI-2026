@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"none\",\n  \"comparison\": \"min\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"No retrieved clause provides a directly comparable numeric threshold or requirement relevant to vinyl flooring thickness.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0TIwqiaSY4+A/+YExBo/CzvO+vXNs+dlczLsh3C6Mvrnz1mDZA7f4BNjvfJ2Zs6xSeILcV54JmhsLSHBl7kelTgktWvHQp1jTY9beWGezkpNHystZIBuirbLs="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 748,
+    "candidatesTokenCount": 68,
+    "totalTokenCount": 816,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 748
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "WnHvavWfIvywvdIP8u_kUQ"
+}

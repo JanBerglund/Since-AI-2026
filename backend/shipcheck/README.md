@@ -12,6 +12,10 @@ cd backend
 The current checkout is missing `claim_models.py` and `units.py`, which are
 imported by the Shipcheck pipeline. Restore those modules before starting the API.
 
+For a faster demo, set `SHIPCHECK_MAX_SECTIONS=5` before starting the API. This
+limits extraction to the first five configured sections; leave it at `0` for a
+complete check. Extraction logs include the elapsed Gemini time for each section.
+
 Upload a selectable-text PDF:
 
 ```sh

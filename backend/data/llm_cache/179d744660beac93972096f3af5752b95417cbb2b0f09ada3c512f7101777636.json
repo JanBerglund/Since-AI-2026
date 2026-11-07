@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"1.9\",\n      \"subject\": \"main engines\",\n      \"quantity\": \"maximum continuous rating percentage\",\n      \"value\": 80,\n      \"unit\": \"%\",\n      \"quote\": \"main engines running at 80% of MCR shall achieve a speed of 16 Knots.\"\n    },\n    {\n      \"section_id\": \"1.9\",\n      \"subject\": \"ship\",\n      \"quantity\": \"speed\",\n      \"value\": 16,\n      \"unit\": \"Knots\",\n      \"quote\": \"shall achieve a speed of 16 Knots.\"\n    },\n    {\n      \"section_id\": \"1.9\",\n      \"subject\": \"main engines\",\n      \"quantity\": \"maximum continuous rating percentage\",\n      \"value\": 90,\n      \"unit\": \"%\",\n      \"quote\": \"main engines running at 90% of MCR shall achieve a speed of 16Knots.\"\n    },\n    {\n      \"section_id\": \"1.9\",\n      \"subject\": \"ship\",\n      \"quantity\": \"speed\",\n      \"value\": 16,\n      \"unit\": \"Knots\",\n      \"quote\": \"shall achieve a speed of 16Knots.\"\n    },\n    {\n      \"section_id\": \"1.9\",\n      \"subject\": \"vessel\",\n      \"quantity\": \"speed\",\n      \"value\": 16,\n      \"unit\": \"knots\",\n      \"quote\": \"will be able to sustain speed of at least 16 knots without the vertical acceleration to exceed 0.2 g and the transverse acceleration 0.1 g.\"\n    },\n    {\n      \"section_id\": \"1.9\",\n      \"subject\": \"vertical acceleration\",\n      \"quantity\": \"acceleration\",\n      \"value\": 0.2,\n      \"unit\": \"g\",\n      \"quote\": \"without the vertical acceleration to exceed 0.2 g\"\n    },\n    {\n      \"section_id\": \"1.9\",\n      \"subject\": \"transverse acceleration\",\n      \"quantity\": \"acceleration\",\n      \"value\": 0.1,\n      \"unit\": \"g\",\n      \"quote\": \"and the transverse acceleration 0.1 g.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TtXbAMZd2nn31zXZB3CDOkQ33a3xXbwh8KnNLO+cMRvKfu26iA7WIpENZXJ1/XtJt835kdPG43spKu8bipg8yEt1WH6FRSizxUcquTiq50F6YsuGoGcI/pUA="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 582,
+    "candidatesTokenCount": 548,
+    "totalTokenCount": 1130,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 582
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "9G7vapGHGoLR28oPgsfKoAM"
+}

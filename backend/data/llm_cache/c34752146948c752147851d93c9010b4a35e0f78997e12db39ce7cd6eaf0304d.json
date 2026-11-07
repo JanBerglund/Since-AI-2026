@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"1.6\",\n      \"subject\": \"ship\",\n      \"quantity\": \"Length overall\",\n      \"value\": 19.50,\n      \"unit\": \"m\",\n      \"quote\": \"Length overall (LOA) 19. 50 m\"\n    },\n    {\n      \"section_id\": \"1.6\",\n      \"subject\": \"ship\",\n      \"quantity\": \"Maximum beam at deck\",\n      \"value\": 6.70,\n      \"unit\": \"m\",\n      \"quote\": \"Maximum beam at deck 6.70 m\"\n    },\n    {\n      \"section_id\": \"1.6\",\n      \"subject\": \"ship\",\n      \"quantity\": \"Length at waterline\",\n      \"value\": 17.40,\n      \"unit\": \"m\",\n      \"quote\": \"Length at waterline 17.40 m\"\n    },\n    {\n      \"section_id\": \"1.6\",\n      \"subject\": \"ship\",\n      \"quantity\": \"Depth\",\n      \"value\": 3.20,\n      \"unit\": \"m\",\n      \"quote\": \"Depth 3.20 m\"\n    },\n    {\n      \"section_id\": \"1.6\",\n      \"subject\": \"ship\",\n      \"quantity\": \"Maximum Service displacement\",\n      \"value\": 48,\n      \"unit\": \"t\",\n      \"quote\": \"Maximum Service  displacement 48 t\"\n    },\n    {\n      \"section_id\": \"1.6\",\n      \"subject\": \"Main engines\",\n      \"quantity\": \"maxim. power\",\n      \"value\": \"2 x 368\",\n      \"unit\": \"kW\",\n      \"quote\": \"Main engines maxim. power (100% MCR) abt. 2 x 368 kW\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TvGeEpMvb+y4U5mkFWzes4JsJ86qfprDicA34ikWsULWHAIQyxs9HRS8jkdEhTCgI+HEUiCdPksk5jML58epgfBgsECKBeA2n4uZvHRGlsQRrsMEQLbJw+ag="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 458,
+    "candidatesTokenCount": 458,
+    "totalTokenCount": 916,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 458
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "8G7vasyHNbPi7M8PlNSTmQw"
+}

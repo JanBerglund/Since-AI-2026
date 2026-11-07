@@ -66,10 +66,12 @@ class GeminiConfig(BaseModel):
                 or ""
             ),
             judgement_model=os.environ.get(
-                "GEMINI_JUDGEMENT_MODEL", "gemma-4-31b-it"
+                "GEMINI_JUDGEMENT_MODEL",
+                os.environ.get("PVAG_LLM_MODEL", "gemini-2.5-flash-lite"),
             ),
             extraction_model=os.environ.get(
-                "GEMINI_EXTRACTION_MODEL", "gemma-4-26b-a4b-it"
+                "GEMINI_EXTRACTION_MODEL",
+                os.environ.get("PVAG_LLM_MODEL", "gemini-2.5-flash-lite"),
             ),
             max_output_tokens=int(
                 os.environ.get("GEMINI_MAX_OUTPUT_TOKENS", MAX_OUTPUT_TOKENS)

@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"Diesel generators (DG) set\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"none\",\n      \"quote\": \"two Diesel generators  (DG) set\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"Diesel generators (DG) set\",\n      \"quantity\": \"power\",\n      \"value\": \"about 720\",\n      \"unit\": \"kWe\",\n      \"quote\": \"about 720 kWe\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"port/emergency Diesel generators (DG) set\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"none\",\n      \"quote\": \"one port/emergency Diesel generators  (DG) set\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"port/emergency Diesel generators (DG) set\",\n      \"quantity\": \"power\",\n      \"value\": \"about 40\",\n      \"unit\": \"kWe\",\n      \"quote\": \"about 40kWe\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"Shore connection\",\n      \"quantity\": \"current\",\n      \"value\": 100,\n      \"unit\": \"A\",\n      \"quote\": \"One Shore connection 100A\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"Shore connection\",\n      \"quantity\": \"voltage\",\n      \"value\": 440,\n      \"unit\": \"V\",\n      \"quote\": \"440V\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"Shore connection\",\n      \"quantity\": \"phases\",\n      \"value\": 3,\n      \"unit\": \"ph\",\n      \"quote\": \"3ph\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"Shore connection\",\n      \"quantity\": \"frequency\",\n      \"value\": 60,\n      \"unit\": \"Hz\",\n      \"quote\": \"60 Hz\"\n    },\n    {\n      \"section_id\": \"7.2\",\n      \"subject\": \"Batteries\",\n      \"quantity\": \"voltage\",\n      \"value\": 24,\n      \"unit\": \"V\",\n      \"quote\": \"Batteries of 24 V\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0Tf5jpWOK3FiJ/XrMm650hT7KC38x2dXu1Blpjdig6g9KeVuXbNLTkzBbgSEetSV/IdkII9U0Jp5oQbUqlAmg4TX0OyzWiYnIgGKomifQQWawNg5RXqBnh53A="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 492,
+    "candidatesTokenCount": 627,
+    "totalTokenCount": 1119,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 492
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "rG_vaprNNsqq3boPkL_SyQk"
+}

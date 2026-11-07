@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"claims\": [{\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Number of unit\", \"value\": 1, \"unit\": \"One\", \"quote\": \"Number of unit One\"}, {\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Rated output\", \"value\": 40, \"unit\": \"KWe\", \"quote\": \"Rated output 40KWe 50KVA (may change due to detail design)\"}, {\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Rated output\", \"value\": 50, \"unit\": \"KVA\", \"quote\": \"Rated output 40KWe 50KVA (may change due to detail design)\"}, {\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Rated voltage\", \"value\": 450, \"unit\": \"V\", \"quote\": \"Rated voltage AC 450 V\"}, {\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Frequency\", \"value\": 60, \"unit\": \"Hz\", \"quote\": \"Frequency 60 Hz\"}, {\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Number of phase\", \"value\": 3, \"unit\": \"Three\", \"quote\": \"Number of phase Three (3)\"}, {\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Power factor\", \"value\": 0.8, \"unit\": \"\", \"quote\": \"Power factor 0.8 (lagging)\"}, {\"section_id\": \"7.2.2\", \"subject\": \"Port Diesel Alternators\", \"quantity\": \"Revolution\", \"value\": 1800, \"unit\": \"RPM\", \"quote\": \"Revolution 1800 RPM(maximum)\"}]}",
+            "thoughtSignature": "EmAKXgFpFH0TRmJqrmfjf/TROgut41lJxV3CCEnpeBb/20dtpS1DkCaCfGncOKx2TRYf1TiooV2agz7qLzTfx+zrvUHXWdIix9FO9skOKoYqfoXNr/n5XEZrJL0FsO56kCA="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 492,
+    "candidatesTokenCount": 457,
+    "totalTokenCount": 949,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 492
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "r2_vaojvLKCDkdUPwpOz-Q4"
+}

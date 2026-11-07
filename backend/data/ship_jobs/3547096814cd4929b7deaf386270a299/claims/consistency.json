@@ -1,0 +1,94 @@
+[
+  {
+    "id": "consistency-0001",
+    "kind": "consistency",
+    "subject": "main engines",
+    "quantity": "maximum continuous rating percentage",
+    "claim_a": {
+      "section_id": "1.9",
+      "subject": "main engines",
+      "quantity": "maximum continuous rating percentage",
+      "value": 80,
+      "unit": "%",
+      "quote": "main engines running at 80% of MCR shall achieve a speed of 16 Knots."
+    },
+    "claim_b": {
+      "section_id": "1.9",
+      "subject": "main engines",
+      "quantity": "maximum continuous rating percentage",
+      "value": 90,
+      "unit": "%",
+      "quote": "main engines running at 90% of MCR shall achieve a speed of 16Knots."
+    },
+    "reason": "Values differ after unit normalization: 80 % vs 90 %."
+  },
+  {
+    "id": "consistency-0002",
+    "kind": "consistency",
+    "subject": "Electrical systems and equipment",
+    "quantity": "ambient temperature",
+    "claim_a": {
+      "section_id": "7.1.1",
+      "subject": "Electrical systems and equipment",
+      "quantity": "ambient temperature",
+      "value": 45,
+      "unit": "C",
+      "quote": "design for an ambient temperature of 45° C in the engine room"
+    },
+    "claim_b": {
+      "section_id": "7.1.1",
+      "subject": "Electrical systems and equipment",
+      "quantity": "ambient temperature",
+      "value": 40,
+      "unit": "C",
+      "quote": "40° C on open deck"
+    },
+    "reason": "Values differ after unit normalization: 45 C vs 40 C."
+  },
+  {
+    "id": "consistency-0003",
+    "kind": "consistency",
+    "subject": "Control & monitoring system",
+    "quantity": "voltage",
+    "claim_a": {
+      "section_id": "7.1.2",
+      "subject": "Control & monitoring system",
+      "quantity": "voltage",
+      "value": 230,
+      "unit": "V",
+      "quote": "Control & monitoring system : AC  230 V, 3ph or 1ph and/or DC\n\n24 V"
+    },
+    "claim_b": {
+      "section_id": "7.1.2",
+      "subject": "Control & monitoring system",
+      "quantity": "voltage",
+      "value": 24,
+      "unit": "V",
+      "quote": "Control & monitoring system : AC  230 V, 3ph or 1ph and/or DC\n\n24 V"
+    },
+    "reason": "Values differ after unit normalization: 230 V vs 24 V."
+  },
+  {
+    "id": "consistency-0004",
+    "kind": "consistency",
+    "subject": "Communication equipment and alarm",
+    "quantity": "voltage",
+    "claim_a": {
+      "section_id": "7.1.2",
+      "subject": "Communication equipment and alarm",
+      "quantity": "voltage",
+      "value": 230,
+      "unit": "V",
+      "quote": "Communication equipment and alarm                                           :\n\nAC 230 V, 3ph or 1ph and/or and/or DC 24 V"
+    },
+    "claim_b": {
+      "section_id": "7.1.2",
+      "subject": "Communication equipment and alarm",
+      "quantity": "voltage",
+      "value": 24,
+      "unit": "V",
+      "quote": "Communication equipment and alarm                                           :\n\nAC 230 V, 3ph or 1ph and/or and/or DC 24 V"
+    },
+    "reason": "Values differ after unit normalization: 230 V vs 24 V."
+  }
+]

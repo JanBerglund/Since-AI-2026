@@ -1,0 +1,692 @@
+[
+  {
+    "id": "pvag-0001",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "Length overall requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Length overall",
+      "value": 19.5,
+      "unit": "m",
+      "quote": "Length overall (LOA) 19. 50 m"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric threshold relevant to the length overall of the ship."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric threshold relevant to the length overall of the ship."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0002",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "Length at waterline requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Length at waterline",
+      "value": 17.4,
+      "unit": "m",
+      "quote": "Length at waterline 17.40 m"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause sets a numeric requirement relevant to the ship length at waterline specification claim."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause sets a numeric requirement relevant to the ship length at waterline specification claim."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0003",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "Depth requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Depth",
+      "value": 3.2,
+      "unit": "m",
+      "quote": "Depth 3.20 m"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a directly comparable numeric threshold for a ship depth of 3.2 m."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a directly comparable numeric threshold for a ship depth of 3.2 m."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0004",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "count requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "1.7",
+      "subject": "The vessel's crew",
+      "quantity": "count",
+      "value": 2,
+      "unit": "persons",
+      "quote": "The vessel’s crew is defined to be 2 persons."
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved PVAG clause provides a directly comparable numeric threshold or requirement for crew count."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved PVAG clause provides a directly comparable numeric threshold or requirement for crew count."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0005",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "thickness requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "4.3",
+      "subject": "Vinyl flooring",
+      "quantity": "thickness",
+      "value": 2.5,
+      "unit": "mm",
+      "quote": "Vinyl flooring will be use in cabins, wheelhouse, mess, laboratory area, passageways with thickness at least of 2.5mm and lain on 6.0mm thick adhesive underlay."
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "none",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause provides a directly comparable numeric threshold or requirement relevant to vinyl flooring thickness."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "none",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause provides a directly comparable numeric threshold or requirement relevant to vinyl flooring thickness."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0006",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "thickness requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "4.3",
+      "subject": "adhesive underlay",
+      "quantity": "thickness",
+      "value": 6.0,
+      "unit": "mm",
+      "quote": "Vinyl flooring will be use in cabins, wheelhouse, mess, laboratory area, passageways with thickness at least of 2.5mm and lain on 6.0mm thick adhesive underlay."
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause directly sets a numeric requirement for the thickness of adhesive underlay."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause directly sets a numeric requirement for the thickness of adhesive underlay."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0007",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "capacity requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "5.6",
+      "subject": "life rafts",
+      "quantity": "capacity",
+      "value": 15,
+      "unit": "persons",
+      "quote": "Two (2) life rafts of capacity 15 persons each."
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a directly comparable numeric threshold or requirement for the capacity of life rafts."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a directly comparable numeric threshold or requirement for the capacity of life rafts."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0008",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "length requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "5.6",
+      "subject": "service boat",
+      "quantity": "length",
+      "value": 4.5,
+      "unit": "m",
+      "quote": "The vessel will be equipped also with a service boat from reinforced polyester (G.R.P.) of length t 4.50m, propulsion from outboard diesel/petrol engine rated at 25 hp at least."
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause provides a numeric threshold or requirement relevant to the service boat length."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause provides a numeric threshold or requirement relevant to the service boat length."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0009",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "capacity requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "6.3",
+      "subject": "general use, combined bilge/fire/ballast pumps",
+      "quantity": "capacity",
+      "value": 25,
+      "unit": "m3/h",
+      "quote": "two (2) for general use, combined bilge/fire/ballast (one spare) capacity 25m3/h – 20/60 m head."
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved PVAG clauses set a numeric requirement relevant to pump capacity for general use, combined bilge/fire/ballast pumps."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved PVAG clauses set a numeric requirement relevant to pump capacity for general use, combined bilge/fire/ballast pumps."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0010",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "voltage requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "7.1.2",
+      "subject": "Heater of large capacity",
+      "quantity": "voltage",
+      "value": 450,
+      "unit": "V",
+      "quote": "Heater of large capacity               : AC  450 V, 3ph"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "none",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric threshold relevant to the heater voltage specification claim of 450 V."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "none",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric threshold relevant to the heater voltage specification claim of 450 V."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0011",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "height requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "8.2",
+      "subject": "internal spaces and alleyways",
+      "quantity": "height",
+      "value": 200,
+      "unit": "cm",
+      "quote": "respective height t 200 cm"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause provides a directly comparable numeric threshold or measurable requirement for the height of internal spaces and alleyways."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved clause provides a directly comparable numeric threshold or measurable requirement for the height of internal spaces and alleyways."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0012",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "length requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "8.2.3",
+      "subject": "accommodation berths",
+      "quantity": "length",
+      "value": 1.8,
+      "unit": "meters",
+      "quote": "1.80 meters long"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric threshold or requirement relevant to accommodation berth length."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric threshold or requirement relevant to accommodation berth length."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0013",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "width requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "8.2.3",
+      "subject": "accommodation berths",
+      "quantity": "width",
+      "value": 0.7,
+      "unit": "meters",
+      "quote": "0.70 meters wide"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved PVAG clause provides a numeric requirement or threshold relevant to the width of accommodation berths."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "unknown",
+        "comparison": "min",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved PVAG clause provides a numeric requirement or threshold relevant to the width of accommodation berths."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0014",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "thickness requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "8.2.3",
+      "subject": "rubber foam mattress",
+      "quantity": "thickness",
+      "value": 100.0,
+      "unit": "mm",
+      "quote": "100.0 mm thick rubber foam mattress"
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric requirement relevant to the thickness of a rubber foam mattress."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "None of the retrieved clauses provide a numeric requirement relevant to the thickness of a rubber foam mattress."
+      },
+      "issue": "Model selected a clause outside the retrieved candidates"
+    }
+  },
+  {
+    "id": "pvag-0015",
+    "kind": "pvag",
+    "verdict": "unknown",
+    "hypothetical_verdict": "unknown",
+    "scope": "out_of_scope",
+    "scope_clause_id": "V201.1.1",
+    "scope_quote": "Passenger vessels, other than ferries and tenders, permitted to carry more than 150 passengers or more than 49 overnight passengers shall comply with Chapters V 1 through V 10.",
+    "title": "capacity requirement",
+    "reason": "At least one model response failed validation. PVAG scope is out_of_scope: Known counts are below both large-vessel passenger thresholds.",
+    "claim": {
+      "section_id": "8.2.5",
+      "subject": "dining room",
+      "quantity": "capacity",
+      "value": 8,
+      "unit": "persons",
+      "quote": "The dining room will be able to serve 8 persons, with appropriate turnover."
+    },
+    "clause_id": null,
+    "clause_quote": "",
+    "clause_url": null,
+    "judgement": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "V806.2.1",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved PVAG clause provides a directly comparable numeric threshold or capacity requirement for the dining room capacity of 8 persons; Clause V806.2.1 only states that living and dining areas shall be accessible."
+      },
+      "issue": "Clause quote is not a verbatim substring after whitespace normalization"
+    },
+    "extraction": {
+      "status": "invalid",
+      "output": {
+        "clause_id": "V806.2.1",
+        "comparison": "exact",
+        "value": "unknown",
+        "unit": "",
+        "quote_from_clause": "",
+        "notes": "No retrieved PVAG clause provides a directly comparable numeric threshold or capacity requirement for the dining room capacity of 8 persons; Clause V806.2.1 only states that living and dining areas shall be accessible."
+      },
+      "issue": "Clause quote is not a verbatim substring after whitespace normalization"
+    }
+  }
+]

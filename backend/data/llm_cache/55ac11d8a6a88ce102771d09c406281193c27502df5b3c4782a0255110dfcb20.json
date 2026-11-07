@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"8.2.5\",\n      \"subject\": \"dining room\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"none\",\n      \"quote\": \"The vessel will have only one dining room.\"\n    },\n    {\n      \"section_id\": \"8.2.5\",\n      \"subject\": \"dining room\",\n      \"quantity\": \"capacity\",\n      \"value\": 8,\n      \"unit\": \"persons\",\n      \"quote\": \"The dining room will be able to serve 8 persons, with appropriate turnover.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TSD/jADoqpJ3kvyxgGS0NcTI+3Gyg14NCX9+EGNstRKXbIe8Uwwj37B6jyqn6Zb/C3hJCReWjIq3pROCvM3w5/h7b66NBRUcvoKP/eMNesGIcf41K3RagPDE="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 467,
+    "candidatesTokenCount": 155,
+    "totalTokenCount": 622,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 467
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "82_vaprgA4-evdIPi92l4Q0"
+}

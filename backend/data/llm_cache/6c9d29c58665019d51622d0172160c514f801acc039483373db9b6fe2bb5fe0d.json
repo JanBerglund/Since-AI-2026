@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"7.1.3\",\n      \"subject\": \"AC power supply system\",\n      \"quantity\": \"frequency\",\n      \"value\": 60,\n      \"unit\": \"Hz\",\n      \"quote\": \"A frequency of 60 Hz shall be applied to the AC power supply system.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0T9bzcedripLLmDulPZF8o+pVqooNL15RwksoyZjn46089QW2gH5TgzFnNZrVv/juOkupy83/7j6tXa/+nRPIMoWpGtFt33tkZMv7NuW4nZaWdsrZzGgh9RxY="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 387,
+    "candidatesTokenCount": 91,
+    "totalTokenCount": 478,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 387
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "fG_vav7UAsrk7M8Pk63GwQw"
+}

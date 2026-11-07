@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"unknown\",\n  \"comparison\": \"exact\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"None of the retrieved clauses provide a directly comparable numeric threshold or requirement for the capacity of life rafts.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0Tj/nkUxOOxdBeTqJHGBSy60acwGZL20+Q9p9invL62zjJ9ExejIrBr0rfd9wzsFkLChKUZ3uDAGYKmIQfW0XBrNUrDZjVhar2O16VyKAmr9mHbw0C9KizzYg="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 937,
+    "candidatesTokenCount": 71,
+    "totalTokenCount": 1008,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 937
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "XHHvar6ZG43MvdIPp5z3uA4"
+}

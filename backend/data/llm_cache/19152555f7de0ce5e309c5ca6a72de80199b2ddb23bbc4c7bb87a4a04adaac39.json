@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"none\",\n  \"comparison\": \"exact\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"None of the retrieved clauses provide a numeric threshold relevant to the heater voltage specification claim of 450 V.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0TJWstPPIuhJ2kKPN6CARd5eWKLi58qRFi2RNVaq/rijq0xMwzdkEoPnhHigfNA63cF0e8ZiEdBmHLYezXy9copovokdvgXPYUvMcCDvT44ajYFbaeiDir7VI="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 682,
+    "candidatesTokenCount": 74,
+    "totalTokenCount": 756,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 682
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "X3HvarfREb2Z3boPkImXQA"
+}

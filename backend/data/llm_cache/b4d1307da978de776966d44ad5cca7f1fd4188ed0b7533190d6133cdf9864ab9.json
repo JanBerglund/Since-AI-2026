@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"7.2.3\",\n      \"subject\": \"resistance bulb\",\n      \"quantity\": \"resistance\",\n      \"value\": 100,\n      \"unit\": \"ohm\",\n      \"quote\": \"Two resistance bulb (PT 100 ohm) per each phase (one for working, one for stand-by) to be fitted for detecting stator winding temperature and H.T. alarm displayed in the deck office control panel.\"\n    },\n    {\n      \"section_id\": \"7.2.3\",\n      \"subject\": \"resistance bulb\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"per each phase\",\n      \"quote\": \"Two resistance bulb (PT 100 ohm) per each phase (one for working, one for stand-by) to be fitted for detecting stator winding temperature and H.T. alarm displayed in the deck office control panel.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TcW7NsFc0fLObgN1ra/J8PI6igbz5eocDurlwqJPio/C1nnAN/OIraopPonYegJ6EkCDEhq8mCYRghOx8soRZ2lUx/1I2iIEFtCh8etVhEUXrWt87xtZgfz0="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 635,
+    "candidatesTokenCount": 228,
+    "totalTokenCount": 863,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 635
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "sm_vauCuI9y-vdIPjNb7qA0"
+}

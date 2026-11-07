@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"4.9\",\n      \"subject\": \"open type wheelhouse windows\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"\",\n      \"quote\": \"except for two open type located for good natural ventilation\"\n    },\n    {\n      \"section_id\": \"4.9\",\n      \"subject\": \"clear-view screens\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"\",\n      \"quote\": \"Two clear-view screens and adequate\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0Tb8gE8GTcDPAGmINxjCZYAvYXWU8YxW6j8J2bf1pL+rs2r/aJ7O6+s4kiqebQTB7+qif1IVI2TCEum1EzKrQVi1r505Zm62fzsgM3RtXY99Z2H6YQ2mpXNG0="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 433,
+    "candidatesTokenCount": 146,
+    "totalTokenCount": 579,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 433
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "OG_varC9BqipvdIPgOq22AI"
+}

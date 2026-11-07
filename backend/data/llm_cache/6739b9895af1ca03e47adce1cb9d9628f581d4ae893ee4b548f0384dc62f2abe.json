@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"2.3\",\n      \"subject\": \"access alleyways\",\n      \"quantity\": \"breadth\",\n      \"value\": 0.65,\n      \"unit\": \"m\",\n      \"quote\": \"sufficient breadth (t 0.65m net)\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0T4faKLrLkDEiaE73BKA0hN9BYyaSdRnzpeJZCdec3cnU1PCzz1ZbnS6gV5oiyDeIefENtEnda8s0KtN/un2l6yUuEtSlAO9cqGPqfFbnqfK0lcEVhyheUe+E="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 531,
+    "candidatesTokenCount": 86,
+    "totalTokenCount": 617,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 531
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "LG_vasmQHuDpnsEP2_aPsAw"
+}

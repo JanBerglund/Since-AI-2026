@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Number of unit\",\n      \"value\": 1,\n      \"unit\": \"unit\",\n      \"quote\": \"Number of unit One\"\n    },\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Rated output\",\n      \"value\": 40,\n      \"unit\": \"KWe\",\n      \"quote\": \"Rated output 40KWe 50KVA (may change due to detail design)\"\n    },\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Rated output\",\n      \"value\": 50,\n      \"unit\": \"KVA\",\n      \"quote\": \"Rated output 40KWe 50KVA (may change due to detail design)\"\n    },\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Rated voltage\",\n      \"value\": 450,\n      \"unit\": \"V\",\n      \"quote\": \"Rated voltage AC 450 V\"\n    },\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Frequency\",\n      \"value\": 60,\n      \"unit\": \"Hz\",\n      \"quote\": \"Frequency 60 Hz\"\n    },\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Number of phase\",\n      \"value\": 3,\n      \"unit\": \"phase\",\n      \"quote\": \"Number of phase Three (3)\"\n    },\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Power factor\",\n      \"value\": 0.8,\n      \"unit\": \"dimensionless\",\n      \"quote\": \"Power factor 0.8 (lagging)\"\n    },\n    {\n      \"section_id\": \"7.2.2\",\n      \"subject\": \"Port Diesel Alternators\",\n      \"quantity\": \"Revolution\",\n      \"value\": 1800,\n      \"unit\": \"RPM\",\n      \"quote\": \"Revolution 1800 RPM(maximum)\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0Te4IRXYI29SGfvj6ysxqN6jp2XSNnJmRgNamOl/7FpIqlLspOm+oKM5PKZ7ybOwvQGxdgnjI0rmIP2eTVXIo1OZP5nkxU7XE6+A+n+Eedzm6Vs152m/od6NY="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 575,
+    "candidatesTokenCount": 608,
+    "totalTokenCount": 1183,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 575
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "sG_vapCiPInBkdUP3KaSyQk"
+}

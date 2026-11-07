@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"claims\": [{\"section_id\": \"1.8\", \"subject\": \"sea water\", \"quantity\": \"density\", \"value\": 1.025, \"unit\": \"tonne/m3\", \"quote\": \"sea water having a density of 1.025 tonne/m3\"}]}",
+            "thoughtSignature": "EmAKXgFpFH0TzkSqf1twutO3kWU2yRJjjX5n6KEwSST9AeB+PD+x5ODrkhnymBT/7tFoEqPRRlwxHfysZ1X5XG6mDHordvi0X+oCmBmceoBrMEFZf6Lm1ym16zMXFCLjWQo="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 451,
+    "candidatesTokenCount": 67,
+    "totalTokenCount": 518,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 451
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "827vapXXEtyBkdUP9uajoAw"
+}

@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"1.7\",\n      \"subject\": \"The vessel's crew\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"persons\",\n      \"quote\": \"The vessel’s crew is defined to be 2 persons.\"\n    },\n    {\n      \"section_id\": \"1.7\",\n      \"subject\": \"transporting in operation conditions\",\n      \"quantity\": \"count\",\n      \"value\": 8,\n      \"unit\": \"pax\",\n      \"quote\": \"This means that it should be capable of transporting in operation conditions 8 pax. total, without limitations.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0Te1WnKqPDWBP6cNpKJn1zBuGtGxDMkANs6hhbkqgwVXM7Nbnb94CyuUhawTMGMQB3jvL4DJo80jwTCEN262DcnpAoq1cZwvdQnqP3LzalaOZnOzNZ2UWGo3g="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 439,
+    "candidatesTokenCount": 167,
+    "totalTokenCount": 606,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 439
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "8m7vatChHYKP28oPxL2V-QE"
+}

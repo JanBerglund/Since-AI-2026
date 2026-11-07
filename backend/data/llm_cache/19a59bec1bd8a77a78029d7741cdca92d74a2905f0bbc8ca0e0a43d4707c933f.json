@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"4.6\",\n      \"subject\": \"doors\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"\",\n      \"quote\": \"Two doors will be placed on the rails on the main deck.\"\n    },\n    {\n      \"section_id\": \"4.6\",\n      \"subject\": \"door\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"\",\n      \"quote\": \"Also to be installed one door on the stern bulwark, which will be equipped with one ladder ending.\"\n    },\n    {\n      \"section_id\": \"4.6\",\n      \"subject\": \"ladder ending\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"\",\n      \"quote\": \"Also to be installed one door on the stern bulwark, which will be equipped with one ladder ending.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TEThF4m6E2ebBIJ9Hultozjna+fuNvLxmCj2rdc+mBBRnqsUkcH/uIh6MjNJ/tAFUTGB3FwiC+V9bN2MGWdoGt+P4VkPFl+9yWucEwSD8ydrRBTteBw1NbXU="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 432,
+    "candidatesTokenCount": 230,
+    "totalTokenCount": 662,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 432
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "M2_vasuFDNOa3boPqM-SCA"
+}

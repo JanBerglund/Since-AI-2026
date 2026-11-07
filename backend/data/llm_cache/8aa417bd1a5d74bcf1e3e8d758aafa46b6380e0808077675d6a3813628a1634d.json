@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"unknown\",\n  \"comparison\": \"min\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"None of the retrieved clauses provide a directly comparable numeric threshold for a ship depth of 3.2 m.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0TGEriMgmMqdQx94D5CwwWKGmUZPVAG78lavespz3uzR79IBVjiPaNeRGz2oQ3rzAjemeBwcrx3OYKzQFL0AfVLSm/v1scZ1Fqvhf+4zsYKgw2ncCexA7uYvI="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 619,
+    "candidatesTokenCount": 73,
+    "totalTokenCount": 692,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 619
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "WHHvarjBFP6NvdIPzKDecA"
+}

@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"5.6\",\n      \"subject\": \"life rafts\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"none\",\n      \"quote\": \"Two (2) life rafts of capacity 15 persons each.\"\n    },\n    {\n      \"section_id\": \"5.6\",\n      \"subject\": \"life rafts\",\n      \"quantity\": \"capacity\",\n      \"value\": 15,\n      \"unit\": \"persons\",\n      \"quote\": \"Two (2) life rafts of capacity 15 persons each.\"\n    },\n    {\n      \"section_id\": \"5.6\",\n      \"subject\": \"circular life buoys\",\n      \"quantity\": \"count\",\n      \"value\": 4,\n      \"unit\": \"none\",\n      \"quote\": \"Four (4) circular life buoys and two of them with self igniting lights.\"\n    },\n    {\n      \"section_id\": \"5.6\",\n      \"subject\": \"service boat\",\n      \"quantity\": \"length\",\n      \"value\": 4.50,\n      \"unit\": \"m\",\n      \"quote\": \"The vessel will be equipped also with a service boat from reinforced polyester (G.R.P.) of length t 4.50m, propulsion from outboard diesel/petrol engine rated at 25 hp at least.\"\n    },\n    {\n      \"section_id\": \"5.6\",\n      \"subject\": \"outboard diesel/petrol engine\",\n      \"quantity\": \"power\",\n      \"value\": 25,\n      \"unit\": \"hp\",\n      \"quote\": \"The vessel will be equipped also with a service boat from reinforced polyester (G.R.P.) of length t 4.50m, propulsion from outboard diesel/petrol engine rated at 25 hp at least.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0T/5LB7vESOOpWO75P7FDss6jeBVF49GxeLH5Aq7L7PnA8B6RCnbbeRCzHFefomPY9kRbDJqGORxBec1CYyJfNGdSgTG1esinJ1LJEOv8FYfyuTk/jfWcGjjs="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 549,
+    "candidatesTokenCount": 449,
+    "totalTokenCount": 998,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 549
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "b2_vavC9G56H28oPxrWu0QI"
+}

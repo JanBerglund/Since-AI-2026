@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"8.2\",\n      \"subject\": \"cabin for Captain and Navigating Officer\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"\",\n      \"quote\": \"- 1 cabin for Captain and Navigating Officer:\"\n    },\n    {\n      \"section_id\": \"8.2\",\n      \"subject\": \"cabins for scientists\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"\",\n      \"quote\": \"- 2 cabins for scientists:\"\n    },\n    {\n      \"section_id\": \"8.2\",\n      \"subject\": \"Mess room\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"\",\n      \"quote\": \"- 1 Mess room\"\n    },\n    {\n      \"section_id\": \"8.2\",\n      \"subject\": \"Galley\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"\",\n      \"quote\": \"- 1 Galley\"\n    },\n    {\n      \"section_id\": \"8.2\",\n      \"subject\": \"internal spaces and alleyways\",\n      \"quantity\": \"free breadth\",\n      \"value\": 80,\n      \"unit\": \"cm\",\n      \"quote\": \"real free breadth t 80 cm\"\n    },\n    {\n      \"section_id\": \"8.2\",\n      \"subject\": \"internal spaces and alleyways\",\n      \"quantity\": \"height\",\n      \"value\": 200,\n      \"unit\": \"cm\",\n      \"quote\": \"respective height t 200 cm\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TaeS/a7rSdqoC1qT7wLoQM/jETDKd/SxfXfJfgbGG4EEr0V3tlU1SJvk3v/1Rbouvrf4tqNcyMMfiMAAyQe4oJk4/KFV6FbzY7uBpsHeMXytuJVbgKjlJ+0g="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 677,
+    "candidatesTokenCount": 407,
+    "totalTokenCount": 1084,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 677
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "tm_vasiQBpCOvdIPx67YgAE"
+}

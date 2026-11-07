@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
+import time
 from pathlib import Path
 
 from claim_models import (
@@ -48,6 +50,11 @@ def extract_claims(
     sections = select_sections(load_sections(sections_path))
     if not sections:
         raise ValueError(f"No sections matched the configured include-list in {sections_path}")
+    max_sections = int(os.environ.get("SHIPCHECK_MAX_SECTIONS", "0"))
+    if max_sections < 0:
+        raise ValueError("SHIPCHECK_MAX_SECTIONS must be zero or a positive integer")
+    if max_sections:
+        sections = sections[:max_sections]
     model_client = client or GeminiClient()
     draft = ClaimDraft()
     if not dry_run:
@@ -76,13 +83,19 @@ def extract_claims(
             print(prompt)
             continue
 
+        started = time.perf_counter()
         result = model_client.generate_json(prompt, ClaimBatch, role="extraction")
+        elapsed = time.perf_counter() - started
         if result == "invalid":
             draft.invalid_sections.append(
                 InvalidSection(section_id=section.id, reason="Invalid model response after retry")
             )
             draft.processed_sections.append(section.id)
-            print(f"{section.id}: invalid model response; marked unknown", file=sys.stderr)
+            print(
+                f"{index}/{len(sections)} {section.id}: invalid model response; "
+                f"marked unknown ({elapsed:.1f}s)",
+                file=sys.stderr,
+            )
             write_json(output_path, draft.model_dump(mode="json"))
             continue
 
@@ -101,7 +114,8 @@ def extract_claims(
                 file=sys.stderr,
             )
         print(
-            f"{index}/{len(sections)} {section.id}: {len(valid_claims)} valid claims",
+            f"{index}/{len(sections)} {section.id}: {len(valid_claims)} valid claims "
+            f"({elapsed:.1f}s)",
             flush=True,
         )
         draft.processed_sections.append(section.id)

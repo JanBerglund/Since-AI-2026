@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"clause_id\": \"\", \"comparison\": \"min\", \"value\": \"unknown\", \"unit\": \"\", \"quote_from_clause\": \"\", \"notes\": \"No retrieved clause sets a numeric requirement relevant to the ship length at waterline specification claim.\"}",
+            "thoughtSignature": "EmAKXgFpFH0TbXTzLce7pcXHn6vVMfdx81938fwXnjRQm6s5wYa1hTzwdGouI6GVxbiA5F7NN/Db6+sV6yh11xqR7ZD6kJicuV4HtyHEJzeAAP3wCJUG+Nc8yV1auXkIbdQ="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 585,
+    "candidatesTokenCount": 52,
+    "totalTokenCount": 637,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 585
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "V3HvatumI_r4xN8PorfomA8"
+}

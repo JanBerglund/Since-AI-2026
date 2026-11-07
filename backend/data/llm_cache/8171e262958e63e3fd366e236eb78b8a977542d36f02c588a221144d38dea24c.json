@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"4.8\",\n      \"subject\": \"each door\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"keys\",\n      \"quote\": \"Two keys for each door and two master keys shall be labelled and supplied.\"\n    },\n    {\n      \"section_id\": \"4.8\",\n      \"subject\": \"master keys\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"keys\",\n      \"quote\": \"Two keys for each door and two master keys shall be labelled and supplied.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TLEro1j/RIjG2HL2g3m79Ro/Tlq/kWU2zW8o7R8j7WWuzvWv+L+uWKgkdl28v8tK08O0r0pqchmnm9Y3EXt08mTGKgfyaoSajK9VQGYhctS6GK5UjC9ntQYY="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 691,
+    "candidatesTokenCount": 156,
+    "totalTokenCount": 847,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 691
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "N2_varHtEIa1xN8P_u7_2A0"
+}

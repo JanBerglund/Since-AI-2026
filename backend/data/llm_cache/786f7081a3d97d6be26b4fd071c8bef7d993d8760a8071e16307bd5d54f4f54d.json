@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"unknown\",\n  \"comparison\": \"min\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"None of the retrieved clauses provide a numeric threshold or requirement relevant to accommodation berth length.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0TVA2ba2D+t7Pj2NFZc/7c0tv7Pzfihz3Q82idoVENJZlgiJ89Pk09fK8jBR/15Y6eLWnopslakaxo4jWuQ+4PzkDKmRwJfTFNshvBUYkI0I8bXqWKI75unIg="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 640,
+    "candidatesTokenCount": 68,
+    "totalTokenCount": 708,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 640
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "k3HvarXbN_qzvdIPl8GygQM"
+}

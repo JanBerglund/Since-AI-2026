@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"8.2.1\",\n      \"subject\": \"berths\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"\",\n      \"quote\": \"Two superposed built-in single tier berths\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TUf3gNuCHqgzr9wFjFP/DSI9LhJeMm5rzgPGWUEhyMX9O/8dP3CPYZhse+a43scAKKReCCvGmG0PE8GbzfiWcJluReHWm585hvFsYdd802aphDmD6kEyb9g8="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 438,
+    "candidatesTokenCount": 79,
+    "totalTokenCount": 517,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 438
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "7W_varXhCezhnsEP-aWXuAw"
+}

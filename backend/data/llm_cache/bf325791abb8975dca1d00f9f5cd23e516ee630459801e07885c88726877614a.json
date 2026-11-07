@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"clause_id\": \"unknown\", \"comparison\": \"exact\", \"value\": \"unknown\", \"unit\": \"\", \"quote_from_clause\": \"\", \"notes\": \"No retrieved PVAG clause provides a directly comparable numeric threshold or requirement for crew count.\"}",
+            "thoughtSignature": "EmAKXgFpFH0TOit8JNhAS0ndTdC/RK443WPX1Hsbhm94cTGikClrFaj7ia0Y+R/Iz/ktKhIrleC5XldhfRPkVnUNtneKMebnZWHNHZRwFOFGhF1OFHIkH5/v8+CXb/BtTq4="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 2080,
+    "candidatesTokenCount": 54,
+    "totalTokenCount": 2134,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2080
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "WXHvatvmHuCO28oPveb58AM"
+}

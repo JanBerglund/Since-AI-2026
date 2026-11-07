@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"6.7\",\n      \"subject\": \"double bottom tanks\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"tanks\",\n      \"quote\": \"Fuel will be stored in two double bottom tanks\"\n    },\n    {\n      \"section_id\": \"6.7\",\n      \"subject\": \"service tanks\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"tanks\",\n      \"quote\": \"and in two service tanks located immediately ahead of the fore engine room.\"\n    },\n    {\n      \"section_id\": \"6.7\",\n      \"subject\": \"screws electric driven- pumps\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"pumps\",\n      \"quote\": \"The fuel will be transferred by means of 2 screws electric driven- pumps, into two service tanks.\"\n    },\n    {\n      \"section_id\": \"6.7\",\n      \"subject\": \"bunkering stations\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"stations\",\n      \"quote\": \"The vessel will be provided with two bunkering stations placed on the main deck both port and starboard sides, immediately above the main fuel tank, to allow an easy loading from both sides of the ship.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0Tfmqg5NK0YXmnhwmsM+yAAXW3+eAZKzj/iOMEOJ7FG2ADMa4bRn/WCv+lfmLnxol+3OrpQLxkHzXdUzxzOt5fX10Xh+VUk9ESL2qGzVlyxSHIj0JyWoQOUJ4="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 647,
+    "candidatesTokenCount": 335,
+    "totalTokenCount": 982,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 647
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "dm_varS0I72Z3boPvYyXQA"
+}

@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"7.1.4\",\n      \"subject\": \"450V circuit\",\n      \"quantity\": \"voltage rating\",\n      \"value\": 660,\n      \"unit\": \"V\",\n      \"quote\": \"660V rated cables shall be used for the 450V circuit\"\n    },\n    {\n      \"section_id\": \"7.1.4\",\n      \"subject\": \"AC 220V and DC 24V circuits\",\n      \"quantity\": \"voltage rating\",\n      \"value\": 250,\n      \"unit\": \"V\",\n      \"quote\": \"250V rated cables for AC 220V and DC 24V circuits.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0T54KB8PyhaHJiMFCdQuuxdK2iO4ox+VPrtP/DVDCidDlubK/RSXnBYo0KzSYIy9Svqb0RJ2aABkHsSyo4fmKQ+ESn2jANbIc9zM/afkkrXtFWIwUN26iz60k="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 533,
+    "candidatesTokenCount": 189,
+    "totalTokenCount": 722,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 533
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "fW_vatP8BPb7xN8Py8PE0QE"
+}

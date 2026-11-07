@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"clause_id\": \"\", \"comparison\": \"exact\", \"value\": \"unknown\", \"unit\": \"\", \"quote_from_clause\": \"\", \"notes\": \"None of the retrieved clauses provide a numeric requirement relevant to the thickness of a rubber foam mattress.\"}",
+            "thoughtSignature": "EmAKXgFpFH0TF/TSKVbPC9YUPS+3ozs699fqia/aR9K+c1ml5220dJCx1V9lRJNTxLxm9xe4E50yc50S/DvCszFVk65MesEKL2J6p7A0j4T2zrIxV3Wg01iF2joZbGsWkaw="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 581,
+    "candidatesTokenCount": 54,
+    "totalTokenCount": 635,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 581
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "lnHvap2DENnrkdUP9_rB-A4"
+}

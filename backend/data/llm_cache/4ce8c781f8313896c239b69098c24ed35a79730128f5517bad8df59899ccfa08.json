@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"clause_id\": \"unknown\", \"comparison\": \"exact\", \"value\": \"unknown\", \"unit\": \"\", \"quote_from_clause\": \"\", \"notes\": \"No retrieved clause provides a directly comparable numeric threshold or measurable requirement for the height of internal spaces and alleyways.\"}",
+            "thoughtSignature": "EmAKXgFpFH0TFGI1S5v84+1gqgiX6EIoAMfc5HAbnWomDTTtWRi0cmwDGtNQxQ7LxX6FEBtwVHV+IQGp8/jkKlxoDXU2H2bZUL2r09gnM4C2+pczZcRgrLZtHfsRpDV4KMs="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 696,
+    "candidatesTokenCount": 59,
+    "totalTokenCount": 755,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 696
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "knHvaqGnKPDFvdIPpcX40A4"
+}

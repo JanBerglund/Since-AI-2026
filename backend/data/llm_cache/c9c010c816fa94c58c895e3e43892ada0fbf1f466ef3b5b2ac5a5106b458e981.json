@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Alternator\",\n      \"quantity\": \"voltage\",\n      \"value\": 450,\n      \"unit\": \"V\",\n      \"quote\": \"Alternator\\n\\n: AC 450 V, 3ph\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Power\",\n      \"quantity\": \"voltage\",\n      \"value\": 450,\n      \"unit\": \"V\",\n      \"quote\": \"Power\\n\\n: AC 450 V, 3ph\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Small consumer\",\n      \"quantity\": \"voltage\",\n      \"value\": 230,\n      \"unit\": \"V\",\n      \"quote\": \"Small consumer\\n\\n: AC 230 V, 3ph or 1ph\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Heater of large capacity\",\n      \"quantity\": \"voltage\",\n      \"value\": 450,\n      \"unit\": \"V\",\n      \"quote\": \"Heater of large capacity               : AC  450 V, 3ph\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Lighting\",\n      \"quantity\": \"voltage\",\n      \"value\": 220,\n      \"unit\": \"V\",\n      \"quote\": \"Lighting\\n\\n: AC  220 V, 3ph\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Control & monitoring system\",\n      \"quantity\": \"voltage\",\n      \"value\": 230,\n      \"unit\": \"V\",\n      \"quote\": \"Control & monitoring system : AC  230 V, 3ph or 1ph and/or DC\\n\\n24 V\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Control & monitoring system\",\n      \"quantity\": \"voltage\",\n      \"value\": 24,\n      \"unit\": \"V\",\n      \"quote\": \"Control & monitoring system : AC  230 V, 3ph or 1ph and/or DC\\n\\n24 V\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Communication equipment and alarm\",\n      \"quantity\": \"voltage\",\n      \"value\": 230,\n      \"unit\": \"V\",\n      \"quote\": \"Communication equipment and alarm                                           :\\n\\nAC 230 V, 3ph or 1ph and/or and/or DC 24 V\"\n    },\n    {\n      \"section_id\": \"7.1.2\",\n      \"subject\": \"Communication equipment and alarm\",\n      \"quantity\": \"voltage\",\n      \"value\": 24,\n      \"unit\": \"V\",\n      \"quote\": \"Communication equipment and alarm                                           :\\n\\nAC 230 V, 3ph or 1ph and/or and/or DC 24 V\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0Tvm3mTfr/wy7cFsFAhJXO/lCqeKbesWdiHFYpRl6VqqVUVYcSUtB6nCaiSdy/CZ1OpkPqvNCacI967olh0R78rrz4M/E2b2Kh950NzhBd1FCulMCrcVdZ82o="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 558,
+    "candidatesTokenCount": 794,
+    "totalTokenCount": 1352,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 558
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "eW_vaqjgN9y-vdIPjNb7qA0"
+}

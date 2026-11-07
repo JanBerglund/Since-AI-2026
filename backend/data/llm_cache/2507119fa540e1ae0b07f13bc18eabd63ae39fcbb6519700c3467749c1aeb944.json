@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"8.2.3\",\n      \"subject\": \"accommodation berths\",\n      \"quantity\": \"length\",\n      \"value\": 1.80,\n      \"unit\": \"meters\",\n      \"quote\": \"1.80 meters long\"\n    },\n    {\n      \"section_id\": \"8.2.3\",\n      \"subject\": \"accommodation berths\",\n      \"quantity\": \"width\",\n      \"value\": 0.70,\n      \"unit\": \"meters\",\n      \"quote\": \"0.70 meters wide\"\n    },\n    {\n      \"section_id\": \"8.2.3\",\n      \"subject\": \"rubber foam mattress\",\n      \"quantity\": \"thickness\",\n      \"value\": 100.0,\n      \"unit\": \"mm\",\n      \"quote\": \"100.0 mm thick rubber foam mattress\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0T/RjJjAXcqRz6z0kOcLBO8EMlM8wY60W57J1OOe2MBdWZjtdaOv9WRWN2dXwpsTg8FL2Xi88n6eOKa5+SlJjrpMLkyownuVRQ1hIPotoma8fO85E+pIi6ZCc="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 440,
+    "candidatesTokenCount": 225,
+    "totalTokenCount": 665,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 440
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "8G_vapW5H9Hj7M8P1_iCmQ8"
+}

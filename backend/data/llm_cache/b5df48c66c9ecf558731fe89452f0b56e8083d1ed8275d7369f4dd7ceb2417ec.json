@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"unknown\",\n  \"comparison\": \"min\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"None of the retrieved clauses provide a numeric threshold relevant to the length overall of the ship.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0TPi7i26PYR5kmzN+9jeswzNhibeCLf72feRvcqZL85UQ1S7QOT45D97RqVg9aGTBGas6p+bMg8Gxd1qnVRh5Eqes6BF01OPT1e/+skNHpWAGJ8il4f2dUWtU="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 534,
+    "candidatesTokenCount": 69,
+    "totalTokenCount": 603,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 534
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "VnHvaqv8MO7kkdUPpunoiA8"
+}

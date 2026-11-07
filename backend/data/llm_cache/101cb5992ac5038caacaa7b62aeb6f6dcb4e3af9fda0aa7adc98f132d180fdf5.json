@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"claims\": [{\"section_id\": \"8.2.6\", \"subject\": \"galley\", \"quantity\": \"fire places\", \"value\": 4, \"unit\": \"count\", \"quote\": \"galley with 4 fire places\"}]}",
+            "thoughtSignature": "EmAKXgFpFH0T2crSneUmRATvHRCepe7d+k/PGiu6VUq2KKBCC5jwPZ+LXX3EJ8QlNQtusHtQKy71uxxUV1PjmsyDZN9Wqzuwd503Hok7Uyt0Q6dZA46TDTHphJ3KsnDn2fU="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 496,
+    "candidatesTokenCount": 54,
+    "totalTokenCount": 550,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 496
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "9G_vat_pG4aH28oPmoPPmQI"
+}

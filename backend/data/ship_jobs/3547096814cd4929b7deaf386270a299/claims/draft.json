@@ -1,0 +1,847 @@
+{
+  "claims": [
+    {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Length overall",
+      "value": 19.5,
+      "unit": "m",
+      "quote": "Length overall (LOA) 19. 50 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Maximum beam at deck",
+      "value": 6.7,
+      "unit": "m",
+      "quote": "Maximum beam at deck 6.70 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Length at waterline",
+      "value": 17.4,
+      "unit": "m",
+      "quote": "Length at waterline 17.40 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Depth",
+      "value": 3.2,
+      "unit": "m",
+      "quote": "Depth 3.20 m"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "ship",
+      "quantity": "Maximum Service displacement",
+      "value": 48,
+      "unit": "t",
+      "quote": "Maximum Service  displacement 48 t"
+    },
+    {
+      "section_id": "1.6",
+      "subject": "Main engines",
+      "quantity": "maxim. power",
+      "value": "2 x 368",
+      "unit": "kW",
+      "quote": "Main engines maxim. power (100% MCR) abt. 2 x 368 kW"
+    },
+    {
+      "section_id": "1.7",
+      "subject": "The vessel's crew",
+      "quantity": "count",
+      "value": 2,
+      "unit": "persons",
+      "quote": "The vessel’s crew is defined to be 2 persons."
+    },
+    {
+      "section_id": "1.7",
+      "subject": "transporting in operation conditions",
+      "quantity": "count",
+      "value": 8,
+      "unit": "pax",
+      "quote": "This means that it should be capable of transporting in operation conditions 8 pax. total, without limitations."
+    },
+    {
+      "section_id": "1.8",
+      "subject": "sea water",
+      "quantity": "density",
+      "value": 1.025,
+      "unit": "tonne/m3",
+      "quote": "sea water having a density of 1.025 tonne/m3"
+    },
+    {
+      "section_id": "1.9",
+      "subject": "main engines",
+      "quantity": "maximum continuous rating percentage",
+      "value": 80,
+      "unit": "%",
+      "quote": "main engines running at 80% of MCR shall achieve a speed of 16 Knots."
+    },
+    {
+      "section_id": "1.9",
+      "subject": "ship",
+      "quantity": "speed",
+      "value": 16,
+      "unit": "Knots",
+      "quote": "shall achieve a speed of 16 Knots."
+    },
+    {
+      "section_id": "1.9",
+      "subject": "main engines",
+      "quantity": "maximum continuous rating percentage",
+      "value": 90,
+      "unit": "%",
+      "quote": "main engines running at 90% of MCR shall achieve a speed of 16Knots."
+    },
+    {
+      "section_id": "1.9",
+      "subject": "ship",
+      "quantity": "speed",
+      "value": 16,
+      "unit": "Knots",
+      "quote": "shall achieve a speed of 16Knots."
+    },
+    {
+      "section_id": "1.9",
+      "subject": "vessel",
+      "quantity": "speed",
+      "value": 16,
+      "unit": "knots",
+      "quote": "will be able to sustain speed of at least 16 knots without the vertical acceleration to exceed 0.2 g and the transverse acceleration 0.1 g."
+    },
+    {
+      "section_id": "1.9",
+      "subject": "vertical acceleration",
+      "quantity": "acceleration",
+      "value": 0.2,
+      "unit": "g",
+      "quote": "without the vertical acceleration to exceed 0.2 g"
+    },
+    {
+      "section_id": "1.9",
+      "subject": "transverse acceleration",
+      "quantity": "acceleration",
+      "value": 0.1,
+      "unit": "g",
+      "quote": "and the transverse acceleration 0.1 g."
+    },
+    {
+      "section_id": "1.12",
+      "subject": "noise limits",
+      "quantity": "level",
+      "value": 80,
+      "unit": "dBA",
+      "quote": "In general the noise limits are not to exceed the 80 dBA."
+    },
+    {
+      "section_id": "2.3",
+      "subject": "access alleyways",
+      "quantity": "breadth",
+      "value": 0.65,
+      "unit": "m",
+      "quote": "sufficient breadth (t 0.65m net)"
+    },
+    {
+      "section_id": "4.3",
+      "subject": "Vinyl flooring",
+      "quantity": "thickness",
+      "value": 2.5,
+      "unit": "mm",
+      "quote": "Vinyl flooring will be use in cabins, wheelhouse, mess, laboratory area, passageways with thickness at least of 2.5mm and lain on 6.0mm thick adhesive underlay."
+    },
+    {
+      "section_id": "4.3",
+      "subject": "adhesive underlay",
+      "quantity": "thickness",
+      "value": 6.0,
+      "unit": "mm",
+      "quote": "Vinyl flooring will be use in cabins, wheelhouse, mess, laboratory area, passageways with thickness at least of 2.5mm and lain on 6.0mm thick adhesive underlay."
+    },
+    {
+      "section_id": "4.6",
+      "subject": "rails on the main deck",
+      "quantity": "count",
+      "value": 2,
+      "unit": "doors",
+      "quote": "Two doors will be placed on the rails on the main deck."
+    },
+    {
+      "section_id": "4.6",
+      "subject": "stern bulwark",
+      "quantity": "count",
+      "value": 1,
+      "unit": "door",
+      "quote": "Also to be installed one door on the stern bulwark, which will be equipped with one ladder ending."
+    },
+    {
+      "section_id": "4.6",
+      "subject": "stern bulwark door",
+      "quantity": "count",
+      "value": 1,
+      "unit": "ladder ending",
+      "quote": "Also to be installed one door on the stern bulwark, which will be equipped with one ladder ending."
+    },
+    {
+      "section_id": "4.8",
+      "subject": "each door",
+      "quantity": "count",
+      "value": 2,
+      "unit": "keys",
+      "quote": "Two keys for each door and two master keys shall be labelled and supplied."
+    },
+    {
+      "section_id": "4.8",
+      "subject": "master keys",
+      "quantity": "count",
+      "value": 2,
+      "unit": "keys",
+      "quote": "Two keys for each door and two master keys shall be labelled and supplied."
+    },
+    {
+      "section_id": "4.9",
+      "subject": "open type wheelhouse windows",
+      "quantity": "count",
+      "value": 2,
+      "unit": "windows",
+      "quote": "except for two open type located for good natural ventilation"
+    },
+    {
+      "section_id": "4.9",
+      "subject": "clear-view screens",
+      "quantity": "count",
+      "value": 2,
+      "unit": "screens",
+      "quote": "Two clear-view screens and adequate"
+    },
+    {
+      "section_id": "5.6",
+      "subject": "life rafts",
+      "quantity": "count",
+      "value": 2,
+      "unit": "none",
+      "quote": "Two (2) life rafts of capacity 15 persons each."
+    },
+    {
+      "section_id": "5.6",
+      "subject": "life rafts",
+      "quantity": "capacity",
+      "value": 15,
+      "unit": "persons",
+      "quote": "Two (2) life rafts of capacity 15 persons each."
+    },
+    {
+      "section_id": "5.6",
+      "subject": "circular life buoys",
+      "quantity": "count",
+      "value": 4,
+      "unit": "none",
+      "quote": "Four (4) circular life buoys and two of them with self igniting lights."
+    },
+    {
+      "section_id": "5.6",
+      "subject": "service boat",
+      "quantity": "length",
+      "value": 4.5,
+      "unit": "m",
+      "quote": "The vessel will be equipped also with a service boat from reinforced polyester (G.R.P.) of length t 4.50m, propulsion from outboard diesel/petrol engine rated at 25 hp at least."
+    },
+    {
+      "section_id": "5.6",
+      "subject": "outboard diesel/petrol engine",
+      "quantity": "power",
+      "value": 25,
+      "unit": "hp",
+      "quote": "The vessel will be equipped also with a service boat from reinforced polyester (G.R.P.) of length t 4.50m, propulsion from outboard diesel/petrol engine rated at 25 hp at least."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "pumps",
+      "quantity": "voltage",
+      "value": 380,
+      "unit": "V",
+      "quote": "All pumps will be electrically driven 380V/50Hz."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "pumps",
+      "quantity": "frequency",
+      "value": 50,
+      "unit": "Hz",
+      "quote": "All pumps will be electrically driven 380V/50Hz."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "general use, combined bilge/fire/ballast pumps",
+      "quantity": "count",
+      "value": 2,
+      "unit": "count",
+      "quote": "two (2) for general use, combined bilge/fire/ballast (one spare) capacity 25m3/h – 20/60 m head."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "general use, combined bilge/fire/ballast pumps",
+      "quantity": "capacity",
+      "value": 25,
+      "unit": "m3/h",
+      "quote": "two (2) for general use, combined bilge/fire/ballast (one spare) capacity 25m3/h – 20/60 m head."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "potable water centrifugal pumps",
+      "quantity": "count",
+      "value": 2,
+      "unit": "count",
+      "quote": "Two (2) potable water centrifugal pumps, one of which will be reserve."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "dirty LO transfer screw pump",
+      "quantity": "count",
+      "value": 1,
+      "unit": "count",
+      "quote": "One (1) electrically driven screw pump for dirty LO transfer and"
+    },
+    {
+      "section_id": "6.3",
+      "subject": "hand pump for each machine to drain its sump tank of LO",
+      "quantity": "count",
+      "value": 1,
+      "unit": "count",
+      "quote": "One (1) hand   pump for each machine to drain its sump tank of LO."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "service tank filling screw pumps",
+      "quantity": "count",
+      "value": 2,
+      "unit": "count",
+      "quote": "Two (2) electrical self-priming screw pumps for the filling of the service tanks."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "emergency fire pump",
+      "quantity": "count",
+      "value": 1,
+      "unit": "count",
+      "quote": "One (1) emergency fire pump."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "general service pump and stand by for DD/GG and port diesel diesel generator, sea water system",
+      "quantity": "count",
+      "value": 1,
+      "unit": "count",
+      "quote": "One (1) general service pump and stand by for DD/GG and port diesel diesel generator, sea water system."
+    },
+    {
+      "section_id": "6.3",
+      "subject": "sludge screw pump",
+      "quantity": "count",
+      "value": 1,
+      "unit": "count",
+      "quote": "One (1) electrically driven screw pump for sludge."
+    },
+    {
+      "section_id": "6.7",
+      "subject": "double bottom tanks",
+      "quantity": "count",
+      "value": 2,
+      "unit": "tanks",
+      "quote": "Fuel will be stored in two double bottom tanks"
+    },
+    {
+      "section_id": "6.7",
+      "subject": "service tanks",
+      "quantity": "count",
+      "value": 2,
+      "unit": "tanks",
+      "quote": "and in two service tanks located immediately ahead of the fore engine room."
+    },
+    {
+      "section_id": "6.7",
+      "subject": "screws electric driven- pumps",
+      "quantity": "count",
+      "value": 2,
+      "unit": "pumps",
+      "quote": "The fuel will be transferred by means of 2 screws electric driven- pumps, into two service tanks."
+    },
+    {
+      "section_id": "6.7",
+      "subject": "bunkering stations",
+      "quantity": "count",
+      "value": 2,
+      "unit": "stations",
+      "quote": "The vessel will be provided with two bunkering stations placed on the main deck both port and starboard sides, immediately above the main fuel tank, to allow an easy loading from both sides of the ship."
+    },
+    {
+      "section_id": "7.1.1",
+      "subject": "Electrical systems and equipment",
+      "quantity": "ambient temperature",
+      "value": 45,
+      "unit": "C",
+      "quote": "design for an ambient temperature of 45° C in the engine room"
+    },
+    {
+      "section_id": "7.1.1",
+      "subject": "Electrical systems and equipment",
+      "quantity": "ambient temperature",
+      "value": 40,
+      "unit": "C",
+      "quote": "40° C on open deck"
+    },
+    {
+      "section_id": "7.1.1",
+      "subject": "Electrical systems and equipment",
+      "quantity": "relative humidity",
+      "value": 60,
+      "unit": "%",
+      "quote": "relative humidity of 60%"
+    },
+    {
+      "section_id": "7.1.1",
+      "subject": "Electrical motors and equipment mounted on open decks",
+      "quantity": "protection rate",
+      "value": 56,
+      "unit": "IP",
+      "quote": "protection rate of minimum IP 56"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Alternator",
+      "quantity": "voltage",
+      "value": 450,
+      "unit": "V",
+      "quote": "Alternator\n\n: AC 450 V, 3ph"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Power",
+      "quantity": "voltage",
+      "value": 450,
+      "unit": "V",
+      "quote": "Power\n\n: AC 450 V, 3ph"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Small consumer",
+      "quantity": "voltage",
+      "value": 230,
+      "unit": "V",
+      "quote": "Small consumer\n\n: AC 230 V, 3ph or 1ph"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Heater of large capacity",
+      "quantity": "voltage",
+      "value": 450,
+      "unit": "V",
+      "quote": "Heater of large capacity               : AC  450 V, 3ph"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Lighting",
+      "quantity": "voltage",
+      "value": 220,
+      "unit": "V",
+      "quote": "Lighting\n\n: AC  220 V, 3ph"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Control & monitoring system",
+      "quantity": "voltage",
+      "value": 230,
+      "unit": "V",
+      "quote": "Control & monitoring system : AC  230 V, 3ph or 1ph and/or DC\n\n24 V"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Control & monitoring system",
+      "quantity": "voltage",
+      "value": 24,
+      "unit": "V",
+      "quote": "Control & monitoring system : AC  230 V, 3ph or 1ph and/or DC\n\n24 V"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Communication equipment and alarm",
+      "quantity": "voltage",
+      "value": 230,
+      "unit": "V",
+      "quote": "Communication equipment and alarm                                           :\n\nAC 230 V, 3ph or 1ph and/or and/or DC 24 V"
+    },
+    {
+      "section_id": "7.1.2",
+      "subject": "Communication equipment and alarm",
+      "quantity": "voltage",
+      "value": 24,
+      "unit": "V",
+      "quote": "Communication equipment and alarm                                           :\n\nAC 230 V, 3ph or 1ph and/or and/or DC 24 V"
+    },
+    {
+      "section_id": "7.1.3",
+      "subject": "AC power supply system",
+      "quantity": "frequency",
+      "value": 60,
+      "unit": "Hz",
+      "quote": "A frequency of 60 Hz shall be applied to the AC power supply system."
+    },
+    {
+      "section_id": "7.1.4",
+      "subject": "450V circuit",
+      "quantity": "voltage rating",
+      "value": 660,
+      "unit": "V",
+      "quote": "660V rated cables shall be used for the 450V circuit"
+    },
+    {
+      "section_id": "7.1.4",
+      "subject": "AC 220V and DC 24V circuits",
+      "quantity": "voltage rating",
+      "value": 250,
+      "unit": "V",
+      "quote": "250V rated cables for AC 220V and DC 24V circuits."
+    },
+    {
+      "section_id": "7.2",
+      "subject": "Diesel generators (DG) set",
+      "quantity": "count",
+      "value": 2,
+      "unit": "none",
+      "quote": "two Diesel generators  (DG) set"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "Diesel generators (DG) set",
+      "quantity": "power",
+      "value": "about 720",
+      "unit": "kWe",
+      "quote": "about 720 kWe"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "port/emergency Diesel generators (DG) set",
+      "quantity": "count",
+      "value": 1,
+      "unit": "none",
+      "quote": "one port/emergency Diesel generators  (DG) set"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "port/emergency Diesel generators (DG) set",
+      "quantity": "power",
+      "value": "about 40",
+      "unit": "kWe",
+      "quote": "about 40kWe"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "Shore connection",
+      "quantity": "current",
+      "value": 100,
+      "unit": "A",
+      "quote": "One Shore connection 100A"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "Shore connection",
+      "quantity": "voltage",
+      "value": 440,
+      "unit": "V",
+      "quote": "440V"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "Shore connection",
+      "quantity": "phases",
+      "value": 3,
+      "unit": "ph",
+      "quote": "3ph"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "Shore connection",
+      "quantity": "frequency",
+      "value": 60,
+      "unit": "Hz",
+      "quote": "60 Hz"
+    },
+    {
+      "section_id": "7.2",
+      "subject": "Batteries",
+      "quantity": "voltage",
+      "value": 24,
+      "unit": "V",
+      "quote": "Batteries of 24 V"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Number of unit",
+      "value": 1,
+      "unit": "unit",
+      "quote": "Number of unit One"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Rated output",
+      "value": 40,
+      "unit": "KWe",
+      "quote": "Rated output 40KWe 50KVA (may change due to detail design)"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Rated output",
+      "value": 50,
+      "unit": "KVA",
+      "quote": "Rated output 40KWe 50KVA (may change due to detail design)"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Rated voltage",
+      "value": 450,
+      "unit": "V",
+      "quote": "Rated voltage AC 450 V"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Frequency",
+      "value": 60,
+      "unit": "Hz",
+      "quote": "Frequency 60 Hz"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Number of phase",
+      "value": 3,
+      "unit": "phase",
+      "quote": "Number of phase Three (3)"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Power factor",
+      "value": 0.8,
+      "unit": "dimensionless",
+      "quote": "Power factor 0.8 (lagging)"
+    },
+    {
+      "section_id": "7.2.2",
+      "subject": "Port Diesel Alternators",
+      "quantity": "Revolution",
+      "value": 1800,
+      "unit": "RPM",
+      "quote": "Revolution 1800 RPM(maximum)"
+    },
+    {
+      "section_id": "7.2.3",
+      "subject": "resistance bulb",
+      "quantity": "resistance",
+      "value": 100,
+      "unit": "ohm",
+      "quote": "Two resistance bulb (PT 100 ohm) per each phase (one for working, one for stand-by) to be fitted for detecting stator winding temperature and H.T. alarm displayed in the deck office control panel."
+    },
+    {
+      "section_id": "7.2.3",
+      "subject": "resistance bulb",
+      "quantity": "count",
+      "value": 2,
+      "unit": "per each phase",
+      "quote": "Two resistance bulb (PT 100 ohm) per each phase (one for working, one for stand-by) to be fitted for detecting stator winding temperature and H.T. alarm displayed in the deck office control panel."
+    },
+    {
+      "section_id": "8.2",
+      "subject": "internal ladder",
+      "quantity": "count",
+      "value": 1,
+      "unit": "ladder",
+      "quote": "one internal ladder"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "external ladder",
+      "quantity": "count",
+      "value": 2,
+      "unit": "ladder",
+      "quote": "2 external one on each side"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "direct ladder",
+      "quantity": "count",
+      "value": 1,
+      "unit": "ladder",
+      "quote": "1 direct ladder"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "cabin for Captain and Navigating Officer",
+      "quantity": "count",
+      "value": 1,
+      "unit": "cabin",
+      "quote": "- 1 cabin for Captain and Navigating Officer:"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "cabins for scientists",
+      "quantity": "count",
+      "value": 2,
+      "unit": "cabin",
+      "quote": "- 2 cabins for scientists:"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "Mess room",
+      "quantity": "count",
+      "value": 1,
+      "unit": "room",
+      "quote": "- 1 Mess room"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "Galley",
+      "quantity": "count",
+      "value": 1,
+      "unit": "galley",
+      "quote": "- 1 Galley"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "internal spaces and alleyways",
+      "quantity": "free breadth",
+      "value": 80,
+      "unit": "cm",
+      "quote": "real free breadth t 80 cm"
+    },
+    {
+      "section_id": "8.2",
+      "subject": "internal spaces and alleyways",
+      "quantity": "height",
+      "value": 200,
+      "unit": "cm",
+      "quote": "respective height t 200 cm"
+    },
+    {
+      "section_id": "8.2.2",
+      "subject": "cabins of scientist",
+      "quantity": "count",
+      "value": 2,
+      "unit": "sets",
+      "quote": "Two sets of superposed built-in single tier berths"
+    },
+    {
+      "section_id": "8.2.3",
+      "subject": "accommodation berths",
+      "quantity": "length",
+      "value": 1.8,
+      "unit": "meters",
+      "quote": "1.80 meters long"
+    },
+    {
+      "section_id": "8.2.3",
+      "subject": "accommodation berths",
+      "quantity": "width",
+      "value": 0.7,
+      "unit": "meters",
+      "quote": "0.70 meters wide"
+    },
+    {
+      "section_id": "8.2.3",
+      "subject": "rubber foam mattress",
+      "quantity": "thickness",
+      "value": 100.0,
+      "unit": "mm",
+      "quote": "100.0 mm thick rubber foam mattress"
+    },
+    {
+      "section_id": "8.2.5",
+      "subject": "dining room",
+      "quantity": "count",
+      "value": 1,
+      "unit": "none",
+      "quote": "The vessel will have only one dining room."
+    },
+    {
+      "section_id": "8.2.5",
+      "subject": "dining room",
+      "quantity": "capacity",
+      "value": 8,
+      "unit": "persons",
+      "quote": "The dining room will be able to serve 8 persons, with appropriate turnover."
+    },
+    {
+      "section_id": "8.2.6",
+      "subject": "galley",
+      "quantity": "fire places",
+      "value": 4,
+      "unit": "count",
+      "quote": "galley with 4 fire places"
+    }
+  ],
+  "invalid_sections": [],
+  "processed_sections": [
+    "1",
+    "1.1",
+    "1.2",
+    "1.3",
+    "1.4",
+    "1.5",
+    "1.6",
+    "1.7",
+    "1.8",
+    "1.9",
+    "1.10",
+    "1.11",
+    "1.12",
+    "1.13",
+    "1.14",
+    "2.3",
+    "4",
+    "4.1",
+    "4.2",
+    "4.3",
+    "4.4",
+    "4.5",
+    "4.6",
+    "4.7",
+    "4.8",
+    "4.9",
+    "4.10",
+    "4.11",
+    "5.6",
+    "5.7",
+    "6.3",
+    "6.7",
+    "7.1",
+    "7.1.1",
+    "7.1.2",
+    "7.1.3",
+    "7.1.4",
+    "7.1.5",
+    "7.1.6",
+    "7.1.7",
+    "7.2",
+    "7.2.1",
+    "7.2.2",
+    "7.2.3",
+    "7.2.4",
+    "8",
+    "8.1",
+    "8.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.2.4",
+    "8.2.5",
+    "8.2.6",
+    "8.2.7",
+    "8.3"
+  ]
+}

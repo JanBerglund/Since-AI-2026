@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"claims\": [{\"section_id\": \"6.3\", \"subject\": \"pumps\", \"quantity\": \"voltage\", \"value\": 380, \"unit\": \"V\", \"quote\": \"All pumps will be electrically driven 380V/50Hz.\"}, {\"section_id\": \"6.3\", \"subject\": \"pumps\", \"quantity\": \"frequency\", \"value\": 50, \"unit\": \"Hz\", \"quote\": \"All pumps will be electrically driven 380V/50Hz.\"}, {\"section_id\": \"6.3\", \"subject\": \"general use, combined bilge/fire/ballast pumps\", \"quantity\": \"count\", \"value\": 2, \"unit\": \"count\", \"quote\": \"two (2) for general use, combined bilge/fire/ballast (one spare) capacity 25m3/h \\u2013 20/60 m head.\"}, {\"section_id\": \"6.3\", \"subject\": \"general use, combined bilge/fire/ballast pumps\", \"quantity\": \"capacity\", \"value\": 25, \"unit\": \"m3/h\", \"quote\": \"two (2) for general use, combined bilge/fire/ballast (one spare) capacity 25m3/h \\u2013 20/60 m head.\"}, {\"section_id\": \"6.3\", \"subject\": \"potable water centrifugal pumps\", \"quantity\": \"count\", \"value\": 2, \"unit\": \"count\", \"quote\": \"Two (2) potable water centrifugal pumps, one of which will be reserve.\"}, {\"section_id\": \"6.3\", \"subject\": \"dirty LO transfer screw pump\", \"quantity\": \"count\", \"value\": 1, \"unit\": \"count\", \"quote\": \"One (1) electrically driven screw pump for dirty LO transfer and\"}, {\"section_id\": \"6.3\", \"subject\": \"hand pump for each machine to drain its sump tank of LO\", \"quantity\": \"count\", \"value\": 1, \"unit\": \"count\", \"quote\": \"One (1) hand   pump for each machine to drain its sump tank of LO.\"}, {\"section_id\": \"6.3\", \"subject\": \"service tank filling screw pumps\", \"quantity\": \"count\", \"value\": 2, \"unit\": \"count\", \"quote\": \"Two (2) electrical self-priming screw pumps for the filling of the service tanks.\"}, {\"section_id\": \"6.3\", \"subject\": \"emergency fire pump\", \"quantity\": \"count\", \"value\": 1, \"unit\": \"count\", \"quote\": \"One (1) emergency fire pump.\"}, {\"section_id\": \"6.3\", \"subject\": \"general service pump and stand by for DD/GG and port diesel diesel generator, sea water system\", \"quantity\": \"count\", \"value\": 1, \"unit\": \"count\", \"quote\": \"One (1) general service pump and stand by for DD/GG and port diesel diesel generator, sea water system.\"}, {\"section_id\": \"6.3\", \"subject\": \"sludge screw pump\", \"quantity\": \"count\", \"value\": 1, \"unit\": \"count\", \"quote\": \"One (1) electrically driven screw pump for sludge.\"}]}",
+            "thoughtSignature": "EmAKXgFpFH0TOn1osXYR5T0GHh6z7UVzzIXOuWxKgzSwSWzTZw7eoNF/1gU+etNFIAEST1M8VuUU66JqrZNgk+WbVmMqK2Z0RjKA0TOhrULRGIxUJJKlBE4V3z+PRLT1bCQ="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 1226,
+    "candidatesTokenCount": 723,
+    "totalTokenCount": 1949,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1226
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "dG_vaozgIIOwvdIP-6uVkQM"
+}

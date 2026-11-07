@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"4.6\",\n      \"subject\": \"rails on the main deck\",\n      \"quantity\": \"count\",\n      \"value\": 2,\n      \"unit\": \"doors\",\n      \"quote\": \"Two doors will be placed on the rails on the main deck.\"\n    },\n    {\n      \"section_id\": \"4.6\",\n      \"subject\": \"stern bulwark\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"door\",\n      \"quote\": \"Also to be installed one door on the stern bulwark, which will be equipped with one ladder ending.\"\n    },\n    {\n      \"section_id\": \"4.6\",\n      \"subject\": \"stern bulwark door\",\n      \"quantity\": \"count\",\n      \"value\": 1,\n      \"unit\": \"ladder ending\",\n      \"quote\": \"Also to be installed one door on the stern bulwark, which will be equipped with one ladder ending.\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0TvMzxRo8eD6IG2JWCttL3X4735oG2nqVzSmGqko+0ZFU4eAoCSZMEFz7MvkzWKxDC1zEL6N9tiNym+5PCg+c7+EBoqw0SKPuWy4DrTqUsr1vW+VridR0jt+0="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 631,
+    "candidatesTokenCount": 245,
+    "totalTokenCount": 876,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 631
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "NG_vatOMHYrSxN8PvrW6kQ8"
+}

@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"claims\": [{\"section_id\": \"4.3\", \"subject\": \"Vinyl flooring\", \"quantity\": \"thickness\", \"value\": 2.5, \"unit\": \"mm\", \"quote\": \"Vinyl flooring will be use in cabins, wheelhouse, mess, laboratory area, passageways with thickness at least of 2.5mm and lain on 6.0mm thick adhesive underlay.\"}, {\"section_id\": \"4.3\", \"subject\": \"adhesive underlay\", \"quantity\": \"thickness\", \"value\": 6.0, \"unit\": \"mm\", \"quote\": \"Vinyl flooring will be use in cabins, wheelhouse, mess, laboratory area, passageways with thickness at least of 2.5mm and lain on 6.0mm thick adhesive underlay.\"}]}",
+            "thoughtSignature": "EmAKXgFpFH0TgoPj6b6USFpzGQ43AkFGwpa65EdQnKdmfzTjYJ+cKg2GugRuZY2VpLic8PHwtU+xaeK+ktfZz1jkYjRjJgJ5DEALqWUxsAP+HiOrHx/Sw53VLOo31Qmf8bY="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 479,
+    "candidatesTokenCount": 169,
+    "totalTokenCount": 648,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 479
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "MG_vap3uDb-ZkdUP4sipwAw"
+}

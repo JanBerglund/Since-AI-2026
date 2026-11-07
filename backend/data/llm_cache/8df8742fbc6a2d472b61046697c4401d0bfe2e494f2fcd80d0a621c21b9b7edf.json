@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"unknown\",\n  \"comparison\": \"min\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"None of the retrieved PVAG clauses set a numeric requirement relevant to pump capacity for general use, combined bilge/fire/ballast pumps.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0TtfHl9XCvvvBBTAbEJv9DAEhPB33u9bMb73YPKnl4WJzgT5Rg0JnDf5h3hzOJM/LTmtRFbi0j2g1gx/jTJEgGtjKqsc+NLEFDs2zsj6KfSYxhTK4ijXlpKZA="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 638,
+    "candidatesTokenCount": 79,
+    "totalTokenCount": 717,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 638
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "XnHvas_dG8nskdUPh82p2AE"
+}

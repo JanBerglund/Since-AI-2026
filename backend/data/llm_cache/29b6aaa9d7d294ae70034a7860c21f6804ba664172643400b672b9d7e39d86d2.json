@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"unknown\",\n  \"comparison\": \"exact\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"No retrieved clause provides a numeric threshold or requirement relevant to the service boat length.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0ToLs5gjasG7OKZ0R+nsH0/UTH2zjRac/hgfdSlNNJWoDhl6fC3fE0jfYBtGrYmlwDeVPtDm8o7oRxbQyuPCZFDyRW9a+LceHPna7FLqjQrqVLG+11GkVC69E="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 2093,
+    "candidatesTokenCount": 67,
+    "totalTokenCount": 2160,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2093
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "XXHvar2MKsu7kdUP-7qW0QI"
+}

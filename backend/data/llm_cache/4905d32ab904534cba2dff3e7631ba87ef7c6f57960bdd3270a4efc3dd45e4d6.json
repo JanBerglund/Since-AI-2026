@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"clause_id\": \"unknown\", \"comparison\": \"exact\", \"value\": \"unknown\", \"unit\": \"\", \"quote_from_clause\": \"\", \"notes\": \"No retrieved clause directly sets a numeric requirement for the thickness of adhesive underlay.\"}",
+            "thoughtSignature": "EmAKXgFpFH0TB6EaTFBjffiSvXT+ljS1xxw6bY1+mLqGDnT1CvC+69aqRZP4Z6sAevgP0Wjxn7v7yznoP6tA4c/AqAtAyuXJLB+qfAWmKEoQog8uZ7dsgWq1ZXI67IThTgU="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 749,
+    "candidatesTokenCount": 53,
+    "totalTokenCount": 802,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 749
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "W3HvatqQIOzYkdUP2PaRoQw"
+}

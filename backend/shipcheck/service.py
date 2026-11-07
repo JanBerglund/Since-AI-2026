@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import uuid
@@ -151,6 +152,9 @@ class ShipCheckService:
         page_count: int,
         error: str | None,
         created_at: str | None = None,
+        progress_stage: str | None = None,
+        progress_current: int | None = None,
+        progress_total: int | None = None,
     ) -> None:
         job_dir = self.job_dir(job_id)
         existing: dict[str, Any] = {}
@@ -163,6 +167,17 @@ class ShipCheckService:
             "page_count": page_count,
             "error": error,
             "created_at": created_at or existing.get("created_at"),
+            "progress_stage": progress_stage or existing.get("progress_stage"),
+            "progress_current": (
+                progress_current
+                if progress_current is not None
+                else existing.get("progress_current", 0)
+            ),
+            "progress_total": (
+                progress_total
+                if progress_total is not None
+                else existing.get("progress_total", 0)
+            ),
         }
         write_json(status_path, status_data)
 
@@ -241,6 +256,9 @@ class ShipCheckService:
             draft_path = job_dir / "claims/draft.json"
             if sections_path.exists():
                 details["section_count"] = len(select_sections(load_sections(sections_path)))
+                configured_limit = int(os.environ.get("SHIPCHECK_MAX_SECTIONS", "0"))
+                if configured_limit:
+                    details["section_count"] = min(details["section_count"], configured_limit)
             if draft_path.exists():
                 draft = ClaimDraft.model_validate_json(
                     draft_path.read_text(encoding="utf-8")
@@ -333,20 +351,23 @@ class ShipCheckService:
         if status["status"] not in {"checking", "review_required", "check_failed"}:
             raise RuntimeError("Job is not ready to check")
         self.validate_check_request(job_id, request, allow_checking=True)
+        accepted = [
+            SpecClaim.model_validate(item)
+            for item in json.loads(
+                (job_dir / "claims/accepted.json").read_text(encoding="utf-8")
+            )
+        ]
         if status["status"] != "checking":
             self.write_status(
                 job_id,
                 status="checking",
                 page_count=status["page_count"],
                 error=None,
+                progress_stage="checking",
+                progress_current=0,
+                progress_total=len(accepted),
             )
         try:
-            accepted = [
-                SpecClaim.model_validate(item)
-                for item in json.loads(
-                    (job_dir / "claims/accepted.json").read_text(encoding="utf-8")
-                )
-            ]
             consistency = find_contradictions(accepted)
             consistency_path = job_dir / "claims/consistency.json"
             write_json(
@@ -358,11 +379,23 @@ class ShipCheckService:
                 clauses_path=self.clauses_path,
                 embeddings_path=self.embeddings_path,
             )
+            def update_check_progress(current: int, total: int) -> None:
+                self.write_status(
+                    job_id,
+                    status="checking",
+                    page_count=status["page_count"],
+                    error=None,
+                    progress_stage="checking",
+                    progress_current=current,
+                    progress_total=total,
+                )
+
             pvag = check_claims(
                 accepted,
                 retriever,
                 GeminiClient(),
                 GeminiClient(),
+                on_progress=update_check_progress,
             )
             pvag_path = job_dir / "claims/pvag_findings.json"
             write_json(pvag_path, [item.model_dump(mode="json") for item in pvag])

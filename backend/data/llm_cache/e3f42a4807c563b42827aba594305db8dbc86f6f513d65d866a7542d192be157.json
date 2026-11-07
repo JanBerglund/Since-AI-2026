@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"clause_id\": \"V806.2.1\",\n  \"comparison\": \"exact\",\n  \"value\": \"unknown\",\n  \"unit\": \"\",\n  \"quote_from_clause\": \"\",\n  \"notes\": \"No retrieved PVAG clause provides a directly comparable numeric threshold or capacity requirement for the dining room capacity of 8 persons; Clause V806.2.1 only states that living and dining areas shall be accessible.\"\n}",
+            "thoughtSignature": "EmAKXgFpFH0TUmPO5er6tBbdXRU9q4VjtP/fJoEERm1ZMAQ2Go0XmhcG/AwZhd4tGwhbseKKcimMQ17dn39heXW6HJK0cIUfmK9VlWHmuWXVFau2EyGtzxg+Wa7NtvaryWU="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 801,
+    "candidatesTokenCount": 102,
+    "totalTokenCount": 903,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 801
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "l3HvasXDBc33xN8PnbzICA"
+}

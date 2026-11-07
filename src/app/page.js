@@ -17,11 +17,51 @@ import {
 } from "../lib/api";
 import { CHECK_RESULT_STORAGE_KEY } from "../lib/checkResult";
 
-function getPhaseMessage(phase) {
-  if (phase === "uploading") return "Uploading your PDF...";
-  if (phase === "extracting") return "Extracting specification sections and drafting claims...";
-  if (phase === "checking") return "Checking accepted claims against the rules...";
-  return "";
+const STEPS = [
+  ["uploading", "Upload"],
+  ["extracting", "Extract claims"],
+  ["checking", "Run checks"],
+  ["done", "Results"],
+];
+
+function ProgressPanel({ phase, progress, error }) {
+  const activeIndex = phase === "error" ? 0 : Math.max(0, STEPS.findIndex(([id]) => id === phase));
+  const current = progress?.progress_current ?? 0;
+  const total = progress?.progress_total ?? 0;
+  const sectionCurrent = progress?.processed_section_count ?? 0;
+  const sectionTotal = progress?.section_count ?? 0;
+  const checking = phase === "checking";
+  const completed = checking ? current : sectionCurrent;
+  const limit = checking ? total : sectionTotal;
+  const percent = limit > 0 ? Math.min(100, Math.round((completed / limit) * 100)) : 8;
+
+  if (phase === "idle" || phase === "review" || phase === "done") return null;
+
+  return (
+    <section className="card progress-panel" aria-live="polite">
+      <div className="progress-steps">
+        {STEPS.map(([id, label], index) => (
+          <div className={index <= activeIndex ? "progress-step active" : "progress-step"} key={id}>
+            <span>{index < activeIndex ? "✓" : index + 1}</span>
+            {label}
+          </div>
+        ))}
+      </div>
+      <div className="progress-track" aria-hidden="true">
+        <div className="progress-bar" style={{ width: `${percent}%` }} />
+      </div>
+      <p className="status-message">
+        {checking
+          ? total > 0
+            ? `Checking claims: ${current} of ${total}`
+            : "Preparing the rule checks..."
+          : sectionTotal > 0
+            ? `Extracting claims: ${sectionCurrent} of ${sectionTotal} selected sections (${progress.page_count} PDF pages)`
+            : "Uploading and preparing the PDF..."}
+      </p>
+      {error && <p className="error" role="alert">{error}</p>}
+    </section>
+  );
 }
 
 export default function Home() {
@@ -31,210 +71,133 @@ export default function Home() {
   const [jobId, setJobId] = useState("");
   const [jobStatus, setJobStatus] = useState("");
   const [progress, setProgress] = useState(null);
-  const [review, setReview] = useState(null);
-  const [reviewSubmitted, setReviewSubmitted] = useState(false);
-  const [acknowledgeIncomplete, setAcknowledgeIncomplete] = useState(false);
   const [error, setError] = useState("");
+  const [claims, setClaims] = useState(null);
+
+  function trackStatus(status) {
+    setJobStatus(status.status);
+    setProgress(status);
+    if (status.status === "extracting") setPhase("extracting");
+    if (status.status === "checking") setPhase("checking");
+  }
+
+  async function finishExtraction(currentJobId, decisions, acknowledgeIncompleteExtraction, extractedClaims) {
+    await reviewShipcheckClaims(currentJobId, decisions);
+    await startShipcheckCheck(currentJobId, acknowledgeIncompleteExtraction);
+    await waitForShipcheckStatus(currentJobId, trackStatus);
+    const report = await getShipcheckReport(currentJobId);
+    const jobPath = `/api/shipcheck/jobs/${currentJobId}`;
+    const result = {
+      ...report,
+      job_id: currentJobId,
+      pdf: `${jobPath}/pdf`,
+      pages: (report.pages ?? []).map((page) => ({
+        ...page,
+        image: `${jobPath}/pages/${encodeURIComponent(page.image.split("/").pop())}`,
+      })),
+      ship_details: {
+        pdf_pages: progress?.page_count ?? 0,
+        selected_sections: progress?.section_count ?? 0,
+        accepted_claims: decisions.filter((item) => item.decision === "accept").length,
+        selected_claims: extractedClaims.claims
+          .filter(({ index }) => decisions.find((item) => item.index === index)?.decision === "accept")
+          .map(({ claim }) => ({
+            subject: claim.subject,
+            quantity: claim.quantity,
+            value: claim.value,
+            unit: claim.unit,
+            section: claim.section_id,
+            quote: claim.quote,
+          })),
+      },
+    };
+    window.sessionStorage.setItem(CHECK_RESULT_STORAGE_KEY, JSON.stringify(result));
+    setPhase("done");
+    router.push("/results");
+  }
+
+  async function processJob(currentJobId) {
+    const extracted = await getShipcheckClaims(currentJobId);
+    const status = await getShipcheckStatus(currentJobId);
+    setProgress(status);
+    setClaims(extracted);
+    setPhase("review");
+  }
 
   async function onUpload() {
-    if (!file || phase === "uploading" || phase === "extracting" || phase === "checking") return;
+    if (!file || ["uploading", "extracting", "checking"].includes(phase)) return;
     setPhase("uploading");
-    setJobId("");
-    setJobStatus("");
-    setProgress(null);
     setError("");
-    setReview(null);
-    setReviewSubmitted(false);
-    setAcknowledgeIncomplete(false);
-
+    setProgress(null);
     try {
       const created = await createShipcheckJob(file);
       if (typeof created.job_id !== "string" || !/^[0-9a-f]{32}$/.test(created.job_id)) {
         throw new Error("Shipcheck returned an invalid job ID.");
       }
       setJobId(created.job_id);
-      setJobStatus(created.status);
       setPhase("extracting");
-      await waitForShipcheckStatus(created.job_id, (status) => {
-        setJobStatus(status.status);
-        setProgress(status);
-        if (status.status === "extracting") setPhase("extracting");
-      });
-
-      const extracted = await getShipcheckClaims(created.job_id);
-      setReview(extracted);
-      setPhase("review");
+      await waitForShipcheckStatus(created.job_id, trackStatus);
+      await processJob(created.job_id);
     } catch (requestError) {
-      setError(
-        requestError instanceof Error
-          ? requestError.message
-          : "The specification could not be processed.",
-      );
+      setError(requestError instanceof Error ? requestError.message : "The check could not be completed.");
       setPhase("error");
     }
   }
 
   async function onRetryExtraction() {
-    if (!jobId || phase === "extracting") return;
+    if (!jobId) return;
     setPhase("extracting");
     setError("");
-
     try {
       await retryShipcheckExtraction(jobId);
-      setJobStatus("extracting");
-      await waitForShipcheckStatus(jobId, (status) => {
-        setJobStatus(status.status);
-        setProgress(status);
-      });
-
-      const extracted = await getShipcheckClaims(jobId);
-      setReview(extracted);
-      setReviewSubmitted(false);
-      setPhase("review");
+      await waitForShipcheckStatus(jobId, trackStatus);
+      await processJob(jobId);
     } catch (requestError) {
-      setError(
-        requestError instanceof Error
-          ? requestError.message
-          : "Claim extraction could not be completed.",
-      );
-      try {
-        const status = await getShipcheckStatus(jobId);
-        setJobStatus(status.status);
-        setProgress(status);
-      } catch (statusError) {
-        const statusMessage = statusError instanceof Error
-          ? statusError.message
-          : "Unknown status error";
-        setError((message) => `${message} Could not retrieve job status: ${statusMessage}`);
-      }
+      setError(requestError instanceof Error ? requestError.message : "Extraction could not be completed.");
       setPhase("error");
     }
   }
 
-  function updateDecision(index, decision) {
-    setReview((current) => ({
-      ...current,
-      claims: current.claims.map((item) =>
-        item.index === index ? { ...item, decision } : item,
-      ),
-    }));
-  }
-
-  async function onRunChecks() {
-    if (!jobId || !review || phase !== "review") return;
-    setPhase("checking");
+  async function onSubmitReview(decisions, acknowledgeIncompleteExtraction) {
     setError("");
-
-    let claimsReviewed = reviewSubmitted;
+    setPhase("checking");
     try {
-      if (!claimsReviewed) {
-        const decisions = review.claims.map(({ index, decision }) => ({ index, decision }));
-        await reviewShipcheckClaims(jobId, decisions);
-        claimsReviewed = true;
-        setReviewSubmitted(true);
-      }
-
-      const currentStatus = await getShipcheckStatus(jobId);
-      if (currentStatus.status !== "complete") {
-        if (currentStatus.status !== "checking") {
-          await startShipcheckCheck(jobId, acknowledgeIncomplete);
-        }
-        await waitForShipcheckStatus(jobId, (status) => {
-          setJobStatus(status.status);
-          setProgress(status);
-          setPhase("checking");
-        });
-      }
-
-      const report = await getShipcheckReport(jobId);
-      const jobPath = `/api/shipcheck/jobs/${jobId}`;
-      const result = {
-        ...report,
-        pdf: `${jobPath}/pdf`,
-        pages: (report.pages ?? []).map((page) => ({
-          ...page,
-          image: `${jobPath}/pages/${encodeURIComponent(page.image.split("/").pop())}`,
-        })),
-      };
-      window.sessionStorage.setItem(CHECK_RESULT_STORAGE_KEY, JSON.stringify(result));
-      setPhase("done");
-      router.push("/results");
+      await finishExtraction(jobId, decisions, acknowledgeIncompleteExtraction, claims);
     } catch (requestError) {
-      const message = requestError instanceof Error
-        ? requestError.message
-        : "The specification check could not be completed.";
-      setError(
-        message,
-      );
-      try {
-        const currentStatus = await getShipcheckStatus(jobId);
-        setJobStatus(currentStatus.status);
-        setProgress(currentStatus);
-        if (["review_required", "checking", "check_failed", "complete"].includes(currentStatus.status)) {
-          setReviewSubmitted(claimsReviewed);
-          setPhase("review");
-          return;
-        }
-      } catch (statusError) {
-        const statusMessage = statusError instanceof Error
-          ? statusError.message
-          : "Unknown status error";
-        setError(`${message} Could not retrieve the job status: ${statusMessage}`);
-      }
-      setPhase("error");
+      setError(requestError instanceof Error ? requestError.message : "The check could not be completed.");
+      setPhase("review");
     }
   }
 
   const busy = ["uploading", "extracting", "checking"].includes(phase);
+  const extractionFailed = jobStatus === "extraction_failed";
 
   return (
     <main>
       <h1>Ship specification checker</h1>
       <p className="hint">
-        Upload a specification PDF. Review the extracted claims before running checks and viewing the report.
+        Upload a specification PDF, review the extracted requirements, and check them against the rules.
       </p>
-
       <PdfPicker onChange={setFile} />
-
-      {phase !== "review" && (
-        <div className="run">
-          <button
-            type="button"
-            className="primary"
-            disabled={(!file && !(jobId && jobStatus === "extraction_failed")) || busy}
-            onClick={jobId && jobStatus === "extraction_failed" ? onRetryExtraction : onUpload}
-          >
-            {jobId && jobStatus === "extraction_failed"
-              ? "Retry extraction"
-              : phase === "error"
-                ? "Try again"
-                : "Upload and process PDF"}
-          </button>
-          {!file && <span className="hint">Choose a PDF to continue.</span>}
-        </div>
-      )}
-
-      {busy && (
-        <p className="status-message" role="status">
-          {phase === "extracting" && progress?.section_count > 0
-            ? `Extracting claims: ${progress.processed_section_count} of ${progress.section_count} selected sections (${progress.page_count} PDF pages total). This can take several minutes.`
-            : getPhaseMessage(phase)}
-        </p>
-      )}
-      {error && <p className="error" role="alert">{error}</p>}
-
-      {phase === "review" && review && (
+      <div className="run">
+        <button
+          type="button"
+          className="primary"
+          disabled={(!file && !extractionFailed) || busy}
+          onClick={extractionFailed ? onRetryExtraction : onUpload}
+        >
+          {extractionFailed ? "Retry extraction" : "Upload and check PDF"}
+        </button>
+        {!file && !extractionFailed && <span className="hint">Choose a PDF to continue.</span>}
+      </div>
+      <ProgressPanel phase={phase} progress={progress} error={error} />
+      {phase === "review" && claims && (
         <ShipcheckReview
-          review={review}
-          onDecision={updateDecision}
-          acknowledgeIncomplete={acknowledgeIncomplete}
-          onAcknowledgeIncomplete={setAcknowledgeIncomplete}
-          onSubmit={onRunChecks}
-          submitting={false}
-          retrying={reviewSubmitted}
+          data={claims}
+          onSubmit={onSubmitReview}
+          disabled={busy}
         />
       )}
-
       <ChatPanel />
     </main>
   );

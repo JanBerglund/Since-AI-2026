@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"claims\": [\n    {\n      \"section_id\": \"7.1.1\",\n      \"subject\": \"Electrical systems and equipment\",\n      \"quantity\": \"ambient temperature\",\n      \"value\": 45,\n      \"unit\": \"C\",\n      \"quote\": \"design for an ambient temperature of 45° C in the engine room\"\n    },\n    {\n      \"section_id\": \"7.1.1\",\n      \"subject\": \"Electrical systems and equipment\",\n      \"quantity\": \"ambient temperature\",\n      \"value\": 40,\n      \"unit\": \"C\",\n      \"quote\": \"40° C on open deck\"\n    },\n    {\n      \"section_id\": \"7.1.1\",\n      \"subject\": \"Electrical systems and equipment\",\n      \"quantity\": \"relative humidity\",\n      \"value\": 60,\n      \"unit\": \"%\",\n      \"quote\": \"relative humidity of 60%\"\n    },\n    {\n      \"section_id\": \"7.1.1\",\n      \"subject\": \"Electrical motors and equipment mounted on open decks\",\n      \"quantity\": \"protection rate\",\n      \"value\": 56,\n      \"unit\": \"IP\",\n      \"quote\": \"protection rate of minimum IP 56\"\n    }\n  ]\n}",
+            "thoughtSignature": "EmAKXgFpFH0T5WS95hgPOPESUv0SrCJ1FCmXaZbcoLQO8+mE6etg5KgSZNTyURb5D2s8RnoBfQ4ayItEcQtJcQUhVLh+nw4Mkf6E3BfrpAXFrbiNAKS+Z4nuflZfXMULiDw="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 654,
+    "candidatesTokenCount": 307,
+    "totalTokenCount": 961,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 654
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "eG_vasnRLMu-nsEPxcKeoQw"
+}
