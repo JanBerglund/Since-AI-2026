@@ -99,8 +99,49 @@ main > .hint {
 }
 
 .chat-answer {
+  width: min(100%, 860px);
+  max-width: 100%;
   border: 1px solid var(--border);
   background: #f7f9fa;
+  line-height: 1.6;
+}
+
+.chat-answer-content {
+  display: grid;
+  gap: 10px;
+}
+
+.chat-answer-content h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.chat-answer-content ul,
+.chat-answer-content ol {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding-left: 22px;
+}
+
+.chat-answer-content code {
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: #e9eef1;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.chat-answer-content a {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-answer-content a:hover {
+  color: #083650;
 }
 
 .chat-sources {
