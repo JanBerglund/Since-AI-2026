@@ -24,17 +24,21 @@ export default function ResultsView({ result }) {
   const findings = result.findings ?? [];
   const pages = result.pages ?? [];
   const pagesByNumber = new Map(pages.map((page) => [page.n, page]));
-  const counts = findings.reduce(
-    (total, finding) => {
-      total[finding.verdict] = (total[finding.verdict] ?? 0) + 1;
-      return total;
-    },
-    { pass: 0, fail: 0, unknown: 0 },
-  );
+  const ruleCounts = findings
+    .filter((finding) => finding.kind === "pvag")
+    .reduce(
+      (total, finding) => {
+        total[finding.verdict] = (total[finding.verdict] ?? 0) + 1;
+        return total;
+      },
+      { pass: 0, fail: 0, unknown: 0 },
+    );
   const details = result.ship_details ?? {};
   const selectedClaims = details.selected_claims ?? [];
   const consistencyCount = findings.filter((finding) => finding.kind === "consistency").length;
   const ruleComparisonCount = findings.filter((finding) => finding.kind === "pvag").length;
+  const scopeResult = result.scope?.result ?? result.scope?.scope;
+  const acceptedClaimCount = details.accepted_claims ?? selectedClaims.length;
 
   return (
     <section className="card results" aria-labelledby="results-heading">
@@ -67,19 +71,28 @@ export default function ResultsView({ result }) {
       {activeTab === "results" && (
         <>
           <p className="summary">
-            <span className="badge pass">{counts.pass} pass</span>
-            <span className="badge fail">{counts.fail} fail</span>
-            <span className="badge unknown">{counts.unknown} unknown</span>
+            <span className="badge pass">{ruleCounts.pass} verified pass</span>
+            <span className="badge fail">{ruleCounts.fail} verified fail</span>
+            <span className="badge unknown">{ruleCounts.unknown} needs review</span>
           </p>
           <p className="finding-breakdown">
             {consistencyCount} specification conflict{consistencyCount === 1 ? "" : "s"} ·{" "}
             {ruleComparisonCount} rule comparison{ruleComparisonCount === 1 ? "" : "s"}
           </p>
           <p className="results-explanation">
-            A specification conflict means the uploaded document contains contradictory requirements.
-            A rule-comparison failure means a validated requirement did not meet a rule.
-            Unknown means the evidence or comparison could not be validated; it is not automatically a failure.
+            These totals cover generated findings, not every accepted requirement.
+            An accepted requirement is not counted as a pass unless a PVAG rule was
+            retrieved and the comparison was validated. Claims with missing,
+            inconclusive, or irrelevant evidence are shown as needs review.
+            {acceptedClaimCount > ruleComparisonCount &&
+              ` ${acceptedClaimCount - ruleComparisonCount} accepted requirement(s) did not produce a rule comparison.`}
           </p>
+          {scopeResult === "out_of_scope" && (
+            <p className="results-explanation">
+              PVAG is outside this vessel&apos;s calculated scope. The displayed
+              rule comparisons are hypothetical and are not compliance results.
+            </p>
+          )}
           {findings.length === 0 ? (
             <p className="empty">No findings were produced from the selected claims.</p>
           ) : (
@@ -165,9 +178,9 @@ export default function ResultsView({ result }) {
           </div>
           <div>
             <h3>Verdict totals</h3>
-            <p className="stat-number pass">{counts.pass}<span>Pass</span></p>
-            <p className="stat-number fail">{counts.fail}<span>Fail</span></p>
-            <p className="stat-number unknown">{counts.unknown}<span>Unknown</span></p>
+            <p className="stat-number pass">{ruleCounts.pass}<span>Verified pass</span></p>
+            <p className="stat-number fail">{ruleCounts.fail}<span>Verified fail</span></p>
+            <p className="stat-number unknown">{ruleCounts.unknown}<span>Needs review</span></p>
           </div>
           <div className="selected-claims">
             <h3>Selected requirements</h3>

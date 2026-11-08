@@ -28,7 +28,9 @@ from consistency import find_contradictions
 from extract_claims import extract_claims
 from ingest_spec import extract_sections
 from llm import GeminiClient
+from pvag_scope import determine_scope, scope_facts_from_job
 from retrieval import CLAUSES_PATH, EMBEDDINGS_PATH, PVAGRetriever
+from vessel_facts import extract_and_save_vessel_facts
 
 
 MAX_UPLOAD_BYTES = 25 * 1024 * 1024
@@ -43,6 +45,11 @@ JobStatusName = Literal[
     "extraction_failed",
     "check_failed",
 ]
+UNSUPPORTED_PDF_MESSAGE = (
+    "This PDF format is not supported. Upload a ship specification PDF with "
+    "numbered sections that match the configured accessibility-specification "
+    "structure (for example 1, 2.3, 6.3, 7.1, or 8)."
+)
 
 
 class ClaimDecision(BaseModel):
@@ -58,10 +65,22 @@ class ReviewSubmission(BaseModel):
     decisions: list[ClaimDecision]
 
 
+class VesselFactsOverride(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    max_passengers: int | None = Field(default=None, ge=0)
+    overnight_passengers: int | None = Field(default=None, ge=0)
+    crew: int | None = Field(default=None, ge=0)
+    is_ferry: bool | None = None
+    is_tender: bool | None = None
+
+
 class CheckRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     acknowledge_incomplete_extraction: bool = False
+    hypothetical: bool = True
+    vessel_facts: VesselFactsOverride = Field(default_factory=VesselFactsOverride)
 
 
 class ShipCheckService:
@@ -192,6 +211,10 @@ class ShipCheckService:
                 sections_path,
                 [section.model_dump(mode="json") for section in sections],
             )
+            extract_and_save_vessel_facts(
+                sections_path,
+                job_dir / "vessel_facts.json",
+            )
             draft_path = job_dir / "claims/draft.json"
             extract_claims(sections_path, draft_path)
             self.write_status(
@@ -201,11 +224,17 @@ class ShipCheckService:
                 error=None,
             )
         except Exception as error:
+            error_message = str(error)
+            if (
+                isinstance(error, ValueError)
+                and "No sections matched the configured include-list" in error_message
+            ):
+                error_message = UNSUPPORTED_PDF_MESSAGE
             self.write_status(
                 job_id,
                 status="extraction_failed",
                 page_count=status["page_count"],
-                error=f"{type(error).__name__}: {error}",
+                error=error_message,
             )
 
     def claims(self, job_id: str) -> dict[str, Any]:
@@ -236,7 +265,31 @@ class ShipCheckService:
                 item.model_dump(mode="json") for item in draft.invalid_sections
             ],
             "processed_sections": draft.processed_sections,
+            "vessel_facts": self.read_vessel_facts(job_id),
         }
+
+    def read_vessel_facts(self, job_id: str) -> dict[str, Any]:
+        path = self.job_dir(job_id) / "vessel_facts.json"
+        if not path.exists():
+            raise RuntimeError("Vessel facts are not available")
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def apply_vessel_fact_overrides(
+        self,
+        job_id: str,
+        overrides: VesselFactsOverride,
+    ) -> dict[str, Any]:
+        facts = self.read_vessel_facts(job_id)
+        for field_name in overrides.model_fields_set:
+            value = getattr(overrides, field_name)
+            facts[field_name] = {
+                "value": value,
+                "quote": None,
+                "section_id": None,
+                "source": "user",
+            }
+        write_json(self.job_dir(job_id) / "vessel_facts.json", facts)
+        return facts
 
     def status_detail(self, job_id: str) -> dict[str, Any]:
         status = self.read_status(job_id)
@@ -351,6 +404,7 @@ class ShipCheckService:
         if status["status"] not in {"checking", "review_required", "check_failed"}:
             raise RuntimeError("Job is not ready to check")
         self.validate_check_request(job_id, request, allow_checking=True)
+        self.apply_vessel_fact_overrides(job_id, request.vessel_facts)
         accepted = [
             SpecClaim.model_validate(item)
             for item in json.loads(
@@ -368,7 +422,7 @@ class ShipCheckService:
                 progress_total=len(accepted),
             )
         try:
-            consistency = find_contradictions(accepted)
+            consistency = find_contradictions(accepted, GeminiClient())
             consistency_path = job_dir / "claims/consistency.json"
             write_json(
                 consistency_path,
@@ -379,6 +433,8 @@ class ShipCheckService:
                 clauses_path=self.clauses_path,
                 embeddings_path=self.embeddings_path,
             )
+            scope_facts = scope_facts_from_job(self.read_vessel_facts(job_id))
+            scope = determine_scope(scope_facts, retriever.clauses)
             def update_check_progress(current: int, total: int) -> None:
                 self.write_status(
                     job_id,
@@ -395,6 +451,8 @@ class ShipCheckService:
                 retriever,
                 GeminiClient(),
                 GeminiClient(),
+                scope_decision=scope,
+                run_hypothetical=request.hypothetical,
                 on_progress=update_check_progress,
             )
             pvag_path = job_dir / "claims/pvag_findings.json"
@@ -406,6 +464,7 @@ class ShipCheckService:
                 pvag_path,
                 job_dir / "report/report.json",
                 job_dir / "report/pages",
+                scope=scope.model_dump(mode="json"),
             )
             self.write_status(
                 job_id,

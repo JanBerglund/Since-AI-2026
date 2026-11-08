@@ -60,6 +60,11 @@ function ProgressPanel({ phase, progress, error }) {
             : "Uploading and preparing the PDF..."}
       </p>
       {error && <p className="error" role="alert">{error}</p>}
+      {error && phase === "error" && error.includes("PDF format is not supported") && (
+        <p className="hint">
+          Supported files should contain selectable text and numbered accessibility specification sections.
+        </p>
+      )}
     </section>
   );
 }
@@ -81,9 +86,9 @@ export default function Home() {
     if (status.status === "checking") setPhase("checking");
   }
 
-  async function finishExtraction(currentJobId, decisions, acknowledgeIncompleteExtraction, extractedClaims) {
+  async function finishExtraction(currentJobId, decisions, acknowledgeIncompleteExtraction, extractedClaims, vesselFacts) {
     await reviewShipcheckClaims(currentJobId, decisions);
-    await startShipcheckCheck(currentJobId, acknowledgeIncompleteExtraction);
+    await startShipcheckCheck(currentJobId, acknowledgeIncompleteExtraction, vesselFacts);
     await waitForShipcheckStatus(currentJobId, trackStatus);
     const report = await getShipcheckReport(currentJobId);
     const jobPath = `/api/shipcheck/jobs/${currentJobId}`;
@@ -158,11 +163,11 @@ export default function Home() {
     }
   }
 
-  async function onSubmitReview(decisions, acknowledgeIncompleteExtraction) {
+  async function onSubmitReview(decisions, acknowledgeIncompleteExtraction, vesselFacts) {
     setError("");
     setPhase("checking");
     try {
-      await finishExtraction(jobId, decisions, acknowledgeIncompleteExtraction, claims);
+      await finishExtraction(jobId, decisions, acknowledgeIncompleteExtraction, claims, vesselFacts);
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "The check could not be completed.");
       setPhase("review");
@@ -171,10 +176,12 @@ export default function Home() {
 
   const busy = ["uploading", "extracting", "checking"].includes(phase);
   const extractionFailed = jobStatus === "extraction_failed";
+  const unsupportedPdf = error.includes("PDF format is not supported");
 
   return (
     <main>
-      <h1>Ship specification checker</h1>
+      <h1>Mariner AI</h1>
+      <h2>Ship specification checker</h2>
       <p className="hint">
         Upload a specification PDF, review the extracted requirements, and check them against the rules.
       </p>
@@ -184,9 +191,9 @@ export default function Home() {
           type="button"
           className="primary"
           disabled={(!file && !extractionFailed) || busy}
-          onClick={extractionFailed ? onRetryExtraction : onUpload}
+          onClick={extractionFailed && !unsupportedPdf ? onRetryExtraction : onUpload}
         >
-          {extractionFailed ? "Retry extraction" : "Upload and check PDF"}
+          {extractionFailed && !unsupportedPdf ? "Retry extraction" : "Upload and check PDF"}
         </button>
         {!file && !extractionFailed && <span className="hint">Choose a PDF to continue.</span>}
       </div>

@@ -9,6 +9,9 @@ __pycache__/
 /backend/files/*.png
 /backend/test_output/
 /backend/ocr_cache/
+/backend/data/ship_jobs/
+/backend/data/llm_cache/
+/backend/logs/
 /.pnp
 .pnp.*
 .yarn/*

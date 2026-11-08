@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ship Design Compliance Checker",
+  title: "Mariner AI",
   description:
-    "Upload a ship drawing, select pages, and check them against compliance rules.",
+    "Mariner AI ship specification rule checker.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

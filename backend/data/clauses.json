@@ -9018,5 +9018,31 @@
       "wheelchair"
     ],
     "advisory": ""
+  },
+  {
+    "id": "VTEST.1",
+    "chapter": "VTEST",
+    "title": "Overall Vessel Length",
+    "text": "The overall length of the vessel shall not exceed 19.0 m.",
+    "parent_id": null,
+    "source_url": "https://example.com/test-rules",
+    "topics": [
+      "length",
+      "overall length"
+    ],
+    "advisory": ""
+  },
+  {
+    "id": "VTEST.2",
+    "chapter": "VTEST",
+    "title": "Minimum Vessel Crew",
+    "text": "The vessel shall have a minimum crew of 2 persons.",
+    "parent_id": null,
+    "source_url": "https://example.com/test-rules",
+    "topics": [
+      "crew",
+      "personnel"
+    ],
+    "advisory": ""
   }
 ]

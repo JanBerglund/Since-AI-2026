@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -35,6 +36,7 @@ GEOMETRIC_OR_CAPACITY = re.compile(
     r"occupants?|berths?|occupancy)\b",
     re.IGNORECASE,
 )
+DEFAULT_MIN_RETRIEVAL_SCORE = 0.55
 
 
 def is_geometric_or_capacity_claim(claim: SpecClaim) -> bool:
@@ -46,13 +48,23 @@ def is_geometric_or_capacity_claim(claim: SpecClaim) -> bool:
     )
 
 
+def has_pvag_topic(claim: SpecClaim) -> bool:
+    # Retrieval and the relevance judgement support custom rule topics too.
+    # Do not reject claims based on a fixed accessibility-topic allow-list.
+    return True
+
+
 def _prompt(claim: SpecClaim, results: list[SearchResult]) -> str:
     candidates = "\n\n".join(
         f"Clause {result.clause.id} — {result.clause.title}\n{result.clause.text}"
         for result in results
     )
     return (
-        "Choose the single retrieved PVAG clause that directly sets a numeric "
+        "First decide whether the retrieved clauses address the claim topic. "
+        "Return relevant=false and verdict='not_applicable_topic' when they do "
+        "not address it; in that case all comparison fields may be omitted. "
+        "Otherwise return relevant=true and verdict='comparison'. Choose the "
+        "single retrieved PVAG clause that directly sets a numeric "
         "requirement relevant to this specification claim. If no clause gives "
         "a directly comparable numeric threshold, use the most relevant clause "
         "only if it states a measurable threshold; otherwise return a JSON "
@@ -77,6 +89,14 @@ def _assessment(
     output = client.generate_json(prompt, ComparisonAssessment, role=role)
     if output == "invalid":
         return ModelAssessment(status="invalid", output=None, issue="Invalid model response")
+    if not output.relevant:
+        return ModelAssessment(status="valid", output=output)
+    if output.clause_id is None or output.quote_from_clause is None or output.value is None:
+        return ModelAssessment(
+            status="invalid",
+            output=output,
+            issue="Relevant model response omitted required comparison fields",
+        )
     clause = retrieved.get(output.clause_id)
     if clause is None:
         return ModelAssessment(
@@ -115,6 +135,8 @@ def _agreed_threshold(
     second = extraction.output
     if first is None or second is None:
         return None, "A validated model response was not retained."
+    if not first.relevant or not second.relevant:
+        return None, "The retrieved clauses are not relevant to this claim topic."
     if first.clause_id != second.clause_id:
         return None, "Models selected different clause IDs."
     if first.comparison != second.comparison:
@@ -156,10 +178,20 @@ def check_claims(
     extraction_client: JsonGenerator,
     *,
     scope_facts: ScopeFacts = ScopeFacts(),
+    run_hypothetical: bool = True,
+    scope_decision=None,
     on_progress: Callable[[int, int], None] | None = None,
 ) -> list[PVAGFinding]:
-    scope = determine_scope(scope_facts, retriever.clauses)
+    scope = scope_decision or determine_scope(scope_facts, retriever.clauses)
+    if scope.scope == "out_of_scope" and not run_hypothetical:
+        print(
+            "PVAG scope is out_of_scope; per-claim comparisons are disabled "
+            "by configuration.",
+            file=sys.stdout,
+        )
+        return []
     findings: list[PVAGFinding] = []
+    skipped_counts = {"no_topic": 0, "low_retrieval_score": 0}
     pvag_clauses = {
         clause.id: clause for clause in retriever.clauses if clause.id.startswith("V")
     }
@@ -167,13 +199,31 @@ def check_claims(
     for claim_index, claim in enumerate(claims, start=1):
         if on_progress is not None:
             on_progress(claim_index, total_claims)
-        if not is_geometric_or_capacity_claim(claim):
+        if not has_pvag_topic(claim):
+            skipped_counts["no_topic"] += 1
+            print(
+                f"Skipped claim {claim_index}: no PVAG topic "
+                f"(quantity={claim.quantity!r}, subject={claim.subject!r})",
+                file=sys.stdout,
+            )
             continue
         results = retriever.search(
             f"{claim.subject} {claim.quantity} {claim.value} {claim.unit} {claim.quote}",
             k=3,
             id_prefix="V",
         )
+        min_score = float(
+            os.environ.get("PVAG_MIN_RETRIEVAL_SCORE", DEFAULT_MIN_RETRIEVAL_SCORE)
+        )
+        if not results or results[0].score < min_score:
+            skipped_counts["low_retrieval_score"] += 1
+            score = results[0].score if results else None
+            print(
+                f"Skipped claim {claim_index}: retrieval score below threshold "
+                f"(score={score!r}, threshold={min_score})",
+                file=sys.stdout,
+            )
+            continue
         candidate_map = {
             result.clause.id: result.clause
             for result in results
@@ -188,7 +238,7 @@ def check_claims(
         clause_id = None
         clause_quote = ""
         clause_url = None
-        hypothetical: Literal["pass", "fail", "unknown"] = "unknown"
+        hypothetical_verdict: Literal["pass", "fail", "unknown"] = "unknown"
         if candidate_map:
             prompt = _prompt(claim, results)
             judgement = _assessment(
@@ -209,16 +259,20 @@ def check_claims(
                 clause_id = clause.id
                 clause_quote = agreed.quote_from_clause
                 clause_url = clause.source_url
-                hypothetical, comparison_reason = _compare_claim(claim, agreed)
+                hypothetical_verdict, comparison_reason = _compare_claim(claim, agreed)
                 reason = comparison_reason
             else:
                 reason = disagreement or "The model assessments could not be reconciled."
         else:
             reason = "No PVAG clause candidates were retrieved."
 
-        verdict = hypothetical if scope.scope == "in_scope" else "unknown"
+        verdict = hypothetical_verdict
         if scope.scope != "in_scope":
+            verdict = "unknown"
             reason = f"{reason} PVAG scope is {scope.scope}: {scope.reason}"
+            if run_hypothetical:
+                verdict = hypothetical_verdict
+                reason = f"Hypothetical comparison only. {reason}"
         title = (
             candidate_map[clause_id].title
             if clause_id is not None
@@ -228,10 +282,8 @@ def check_claims(
             PVAGFinding(
                 id=f"pvag-{len(findings) + 1:04d}",
                 verdict=verdict,
-                hypothetical_verdict=hypothetical,
-                scope=scope.scope,
-                scope_clause_id=scope.clause_id,
-                scope_quote=scope.quote,
+                hypothetical_verdict=hypothetical_verdict,
+                hypothetical=run_hypothetical and scope.scope != "in_scope",
                 title=title,
                 reason=reason,
                 claim=claim,
@@ -242,6 +294,14 @@ def check_claims(
                 extraction=extraction,
             )
         )
+    print(
+        "PVAG pre-filter skipped "
+        f"{sum(skipped_counts.values())} claim(s): "
+        f"{skipped_counts['no_topic']} no PVAG topic, "
+        f"{skipped_counts['low_retrieval_score']} below retrieval score "
+        f"threshold ({float(os.environ.get('PVAG_MIN_RETRIEVAL_SCORE', DEFAULT_MIN_RETRIEVAL_SCORE))}).",
+        file=sys.stdout,
+    )
     return findings
 
 
@@ -251,6 +311,18 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--clauses", type=Path, default=CLAUSES_PATH)
     parser.add_argument("--embeddings", type=Path, default=EMBEDDINGS_PATH)
+    parser.add_argument(
+        "--hypothetical",
+        action="store_true",
+        default=True,
+        help="Run out-of-scope comparisons and label them hypothetical (default)",
+    )
+    parser.add_argument(
+        "--no-hypothetical",
+        action="store_false",
+        dest="hypothetical",
+        help="Disable out-of-scope comparisons to save model calls",
+    )
     args = parser.parse_args()
     try:
         claims = load_claims(args.accepted)
@@ -263,6 +335,7 @@ def main() -> None:
             retriever,
             GeminiClient(),
             GeminiClient(),
+            run_hypothetical=args.hypothetical,
         )
         write_json(
             args.output,
@@ -275,7 +348,8 @@ def main() -> None:
     for finding in findings:
         print(
             f"{finding.id}: {finding.verdict} "
-            f"(hypothetical={finding.hypothetical_verdict}, scope={finding.scope})"
+            f"(hypothetical={finding.hypothetical_verdict}, "
+            f"labelled_hypothetical={finding.hypothetical})"
         )
     print(f"Saved {len(findings)} PVAG finding(s) to {args.output}")
 

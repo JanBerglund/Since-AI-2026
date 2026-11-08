@@ -6,6 +6,7 @@ import json
 import math
 import re
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -35,6 +36,9 @@ class SpecClaim(BaseModel):
     value: str | int | float
     unit: str
     quote: str
+    comparison: Literal["min", "max", "exact", "approx"] = "exact"
+    context: str | None = None
+    group_id: str = ""
 
     @field_validator("value", mode="before")
     @classmethod
@@ -49,6 +53,18 @@ class SpecClaim(BaseModel):
         if not value.strip():
             raise ValueError("must not be empty")
         return value
+
+    @field_validator("context")
+    @classmethod
+    def normalize_optional_text(cls, value: str | None) -> str | None:
+        if value is not None and not value.strip():
+            return None
+        return value.strip() if value is not None else None
+
+    @field_validator("group_id")
+    @classmethod
+    def normalize_group_id(cls, value: str) -> str:
+        return value.strip()
 
     @field_validator("value")
     @classmethod

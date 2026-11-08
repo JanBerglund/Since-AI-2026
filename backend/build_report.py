@@ -60,6 +60,7 @@ class ReportFinding(BaseModel):
     kind: Literal["consistency", "pvag"]
     verdict: Literal["pass", "fail", "unknown"]
     scope: str
+    scope_status: str
     hypothetical: str
     title: str
     reason: str
@@ -73,6 +74,7 @@ class Report(BaseModel):
     pdf: str
     pages: list[ReportPage]
     findings: list[ReportFinding]
+    scope: dict[str, Any]
 
 
 class QuoteLocator:
@@ -217,10 +219,11 @@ def _consistency_finding(
     return ReportFinding(
         id=str(item["id"]),
         kind="consistency",
-        verdict="fail",
+        verdict="unknown",
         scope="not_applicable",
+        scope_status="not_applicable",
         hypothetical="not_applicable",
-        title=f"Conflicting {item.get('quantity', 'specification')} values for {item.get('subject', 'item')}",
+        title=f"Possible conflict: {item.get('quantity', 'specification')} values need review",
         reason=str(item.get("reason", "Specification claims conflict.")),
         spec_refs=refs,
         clause=None,
@@ -231,6 +234,7 @@ def _pvag_finding(
     item: dict[str, Any],
     sections: dict[str, SpecSection],
     locator: QuoteLocator,
+    scope_status: str,
 ) -> ReportFinding:
     claim = item.get("claim")
     if not isinstance(claim, dict):
@@ -250,8 +254,13 @@ def _pvag_finding(
         id=str(item["id"]),
         kind="pvag",
         verdict=item["verdict"],
-        scope=str(item["scope"]),
-        hypothetical=str(item["hypothetical_verdict"]),
+        scope="hypothetical" if item.get("hypothetical", False) else "in_scope",
+        scope_status=scope_status,
+        hypothetical=(
+            "hypothetical"
+            if item.get("hypothetical", False)
+            else str(item["hypothetical_verdict"])
+        ),
         title=str(item.get("title", "PVAG comparison")),
         reason=str(item.get("reason", "")),
         spec_refs=refs,
@@ -266,6 +275,7 @@ def build_report(
     pvag_path: Path,
     output_path: Path,
     pages_dir: Path,
+    scope: dict[str, Any] | None = None,
 ) -> Report:
     sections = _section_map(sections_path)
     consistency = _read_optional_list(consistency_path)
@@ -297,14 +307,29 @@ def build_report(
             _consistency_finding(item, sections, locator)
             for item in consistency
         ]
+        scope_data = scope or {}
+        scope_status = str(scope_data.get("scope", "unclear"))
         findings.extend(
-            _pvag_finding(item, sections, locator)
+            _pvag_finding(item, sections, locator, scope_status)
             for item in pvag
         )
+        facts = scope_data.get("facts", {})
+        normalized_scope = {
+            "result": scope_status,
+            "facts": facts,
+            "quotes": scope_data.get("clauses", {}),
+            "sources": {
+                name: value.get("source")
+                for name, value in facts.items()
+                if isinstance(value, dict) and value.get("source") is not None
+            },
+            "reason": scope_data.get("reason", ""),
+        }
         result = Report(
             pdf=pdf_path.name,
             pages=pages,
             findings=findings,
+            scope=normalized_scope,
         )
 
     write_json(output_path, result.model_dump(mode="json"))

@@ -32,6 +32,8 @@ MAX_REQUEST_ATTEMPTS = 3
 API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 ENV_PATH = Path(".env")
 CACHE_DIR = Path("data/llm_cache")
+LOG_DIR = Path("logs")
+VALIDATION_LOG_PATH = LOG_DIR / "llm-validation.log"
 T = TypeVar("T", bound=BaseModel)
 
 
@@ -134,12 +136,40 @@ def _estimated_output_text(response: dict[str, Any]) -> str:
     return "\n".join(texts)
 
 
-def _parse_json(text: str, output_model: type[T]) -> T:
+def _extract_first_json_object(text: str) -> str:
     cleaned = text.strip()
-    fenced = re.fullmatch(r"```(?:json)?\s*(.*?)\s*```", cleaned, flags=re.DOTALL | re.IGNORECASE)
-    if fenced:
-        cleaned = fenced.group(1)
-    return output_model.model_validate_json(cleaned)
+    fenced = re.sub(r"^\s*```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
+    fenced = re.sub(r"\s*```\s*$", "", fenced)
+    start = fenced.find("{")
+    if start < 0:
+        raise ValueError("Model response does not contain a JSON object")
+    try:
+        _, end = json.JSONDecoder().raw_decode(fenced[start:])
+    except json.JSONDecodeError as error:
+        raise ValueError(f"Could not decode the first JSON object: {error}") from error
+    return fenced[start : start + end]
+
+
+def _parse_json(text: str, output_model: type[T]) -> T:
+    return output_model.model_validate_json(_extract_first_json_object(text))
+
+
+def _log_validation_failure(
+    *,
+    model: str,
+    role: MODEL_ROLE,
+    attempt: int,
+    raw_response: str,
+    error: Exception,
+) -> None:
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now(timezone.utc).isoformat()
+    with VALIDATION_LOG_PATH.open("a", encoding="utf-8") as log:
+        log.write(
+            f"[{timestamp}] model={model} role={role} attempt={attempt}\n"
+            f"raw_response={raw_response!r}\n"
+            f"validation_error={error!r}\n\n"
+        )
 
 
 class GeminiClient:
@@ -176,9 +206,18 @@ class GeminiClient:
                     "Correct the JSON and return only the corrected JSON."
                 )
             response = self._cached_completion(model, cached_prompt)
+            raw_response = ""
             try:
-                return _parse_json(_response_text(response), output_model)
+                raw_response = _response_text(response)
+                return _parse_json(raw_response, output_model)
             except (KeyError, TypeError, ValueError, ValidationError) as error:
+                _log_validation_failure(
+                    model=model,
+                    role=role,
+                    attempt=attempt + 1,
+                    raw_response=raw_response or _estimated_output_text(response),
+                    error=error,
+                )
                 last_error = str(error)
         return "invalid"
 

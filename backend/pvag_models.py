@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal, Protocol
 
-from pydantic import BaseModel, ConfigDict, field_validator
+from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 
 from claim_models import SpecClaim
 from retrieval import SearchResult
@@ -14,12 +14,14 @@ from scrape import Clause
 class ComparisonAssessment(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    clause_id: str
-    comparison: Literal["min", "max", "exact"]
-    value: str | int | float
-    unit: str
-    quote_from_clause: str
-    notes: str
+    relevant: bool
+    verdict: Literal["comparison", "not_applicable_topic"] = "comparison"
+    clause_id: str | None = None
+    comparison: Literal["min", "max", "exact"] | None = None
+    value: str | int | float | None = None
+    unit: str | None = None
+    quote_from_clause: str | None = None
+    notes: str = ""
 
     @field_validator("value", mode="before")
     @classmethod
@@ -27,6 +29,24 @@ class ComparisonAssessment(BaseModel):
         if isinstance(value, bool):
             raise ValueError("threshold value must not be a boolean")
         return value
+
+    @model_validator(mode="after")
+    def validate_relevance(self) -> "ComparisonAssessment":
+        if not self.relevant:
+            if self.verdict != "not_applicable_topic":
+                raise ValueError("irrelevant assessments must use verdict='not_applicable_topic'")
+            return self
+        if self.verdict != "comparison":
+            raise ValueError("relevant assessments must use verdict='comparison'")
+        if (
+            self.clause_id is None
+            or self.comparison is None
+            or self.value is None
+            or self.unit is None
+            or self.quote_from_clause is None
+        ):
+            raise ValueError("relevant assessments require comparison fields")
+        return self
 
 
 class ModelAssessment(BaseModel):
@@ -44,9 +64,7 @@ class PVAGFinding(BaseModel):
     kind: Literal["pvag"] = "pvag"
     verdict: Literal["pass", "fail", "unknown"]
     hypothetical_verdict: Literal["pass", "fail", "unknown"]
-    scope: Literal["in_scope", "out_of_scope", "unclear"]
-    scope_clause_id: str | None
-    scope_quote: str
+    hypothetical: bool = False
     title: str
     reason: str
     claim: SpecClaim

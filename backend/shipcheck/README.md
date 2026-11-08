@@ -6,11 +6,8 @@ From the project root, create the environment and install dependencies, then run
 python3 -m venv backend/.venv
 backend/.venv/bin/python -m pip install -r requirements.txt
 cd backend
-.venv/bin/python -m uvicorn shipcheck.api:app --host 127.0.0.1 --port 8001
+.venv/bin/python -m uvicorn app:app --host 127.0.0.1 --port 8000
 ```
-
-The current checkout is missing `claim_models.py` and `units.py`, which are
-imported by the Shipcheck pipeline. Restore those modules before starting the API.
 
 For a faster demo, set `SHIPCHECK_MAX_SECTIONS=5` before starting the API. This
 limits extraction to the first five configured sections; leave it at `0` for a
@@ -19,7 +16,7 @@ complete check. Extraction logs include the elapsed Gemini time for each section
 Upload a selectable-text PDF:
 
 ```sh
-curl -F "file=@spec.pdf" http://127.0.0.1:8001/jobs
+curl -F "file=@spec.pdf" http://127.0.0.1:8000/jobs
 ```
 
 The API validates the PDF, stores it under `data/ship_jobs/<job_id>/`, then
@@ -39,11 +36,11 @@ the job cannot proceed as if extraction were complete. Start checks with
 `GET /jobs/{job_id}/report`. Report page image URLs and the uploaded PDF URL
 are served from the same job.
 
-The check can label a reviewed internal contradiction as `fail`. A PVAG
+The check can label a reviewed internal contradiction as `fail`. A rule
 comparison is an actual `fail` only when both models agree, the quote and
 threshold validate, the Python comparison fails, and scope is `in_scope`.
 Out-of-scope or uncertain comparisons have actual verdict `unknown`; the
-hypothetical PVAG verdict is retained separately. This does not guarantee
+hypothetical verdict is retained separately. This does not guarantee
 detection of every wrong specification value: model extraction is fallible,
 and a person must review each drafted claim.
 

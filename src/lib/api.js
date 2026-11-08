@@ -106,10 +106,13 @@ export function reviewShipcheckClaims(jobId, decisions) {
   });
 }
 
-export function startShipcheckCheck(jobId, acknowledgeIncompleteExtraction) {
+export function startShipcheckCheck(jobId, acknowledgeIncompleteExtraction, vesselFacts = {}) {
   return shipcheckRequest(`/jobs/${jobId}/check`, {
     method: "POST",
-    body: { acknowledge_incomplete_extraction: acknowledgeIncompleteExtraction },
+    body: {
+      acknowledge_incomplete_extraction: acknowledgeIncompleteExtraction,
+      vessel_facts: vesselFacts,
+    },
   });
 }
 

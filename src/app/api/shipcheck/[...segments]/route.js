@@ -1,5 +1,5 @@
 const SHIPCHECK_API_URL =
-  process.env.SHIPCHECK_API_URL || "http://127.0.0.1:8001";
+  process.env.SHIPCHECK_API_URL || "http://127.0.0.1:8000";
 const JOB_ID_PATTERN = /^[0-9a-f]{32}$/;
 
 function isAllowedPath(method, segments) {
